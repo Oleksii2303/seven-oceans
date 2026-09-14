@@ -1,4 +1,4 @@
-// ===== ADVANCED: RAIN + MOUSE + DRIPS =====
+// ===== ADVANCED REALISTIC RAIN + DRIPS + MOUSE =====
 document.addEventListener('DOMContentLoaded', () => {
 
   // ===== MOBILE MENU =====
@@ -38,20 +38,56 @@ document.addEventListener('DOMContentLoaded', () => {
     mouse.active = false;
   });
 
-  // ===== INTERACTIVE RAIN =====
+  // ==========================================
+  // ===== REALISTIC RAIN (3 LAYERS) =====
+  // ==========================================
   const rain = document.getElementById('rain');
   const raindrops = [];
 
   if (rain) {
-    const dropsCount = 80;
-    for (let i = 0; i < dropsCount; i++) {
+
+    // ===== LAYER 1: BACKGROUND — thin falling lines =====
+    for (let i = 0; i < 50; i++) {
       const drop = document.createElement('div');
-      drop.className = 'raindrop';
+      drop.className = 'raindrop raindrop-bg';
       drop.style.left = Math.random() * 100 + '%';
-      drop.style.animationDuration = (1.8 + Math.random() * 2) + 's';
+      drop.style.animationDuration = (0.8 + Math.random() * 1.2) + 's';
+      drop.style.animationDelay = Math.random() * 4 + 's';
+      drop.style.height = (30 + Math.random() * 50) + 'px';
+      drop.style.opacity = 0.2 + Math.random() * 0.3;
+      drop.dataset.layer = 'bg';
+      drop.dataset.ox = 0;
+      drop.dataset.oy = 0;
+      rain.appendChild(drop);
+      raindrops.push(drop);
+    }
+
+    // ===== LAYER 2: MIDDLE — medium drops =====
+    for (let i = 0; i < 30; i++) {
+      const drop = document.createElement('div');
+      drop.className = 'raindrop raindrop-mid';
+      drop.style.left = Math.random() * 100 + '%';
+      drop.style.animationDuration = (1.5 + Math.random() * 1.5) + 's';
       drop.style.animationDelay = Math.random() * 5 + 's';
-      drop.style.height = (25 + Math.random() * 40) + 'px';
-      drop.style.opacity = 0.4 + Math.random() * 0.5;
+      drop.style.height = (20 + Math.random() * 30) + 'px';
+      drop.style.opacity = 0.3 + Math.random() * 0.3;
+      drop.dataset.layer = 'mid';
+      drop.dataset.ox = 0;
+      drop.dataset.oy = 0;
+      rain.appendChild(drop);
+      raindrops.push(drop);
+    }
+
+    // ===== LAYER 3: FOREGROUND — big round drops on "glass" =====
+    for (let i = 0; i < 25; i++) {
+      const drop = document.createElement('div');
+      drop.className = 'raindrop-glassy';
+      drop.style.left = Math.random() * 100 + '%';
+      drop.style.top = Math.random() * 100 + '%';
+      drop.style.width = (6 + Math.random() * 14) + 'px';
+      drop.style.height = (6 + Math.random() * 14) + 'px';
+      drop.style.animationDelay = Math.random() * 8 + 's';
+      drop.style.animationDuration = (8 + Math.random() * 6) + 's';
       drop.dataset.ox = 0;
       drop.dataset.oy = 0;
       rain.appendChild(drop);
@@ -59,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Physics loop for rain repulsion
+  // ===== RAIN PHYSICS (MOUSE REPULSION) =====
   function animateRain() {
     raindrops.forEach(drop => {
       const rect = drop.getBoundingClientRect();
@@ -68,25 +104,31 @@ document.addEventListener('DOMContentLoaded', () => {
       const dx = dropX - mouse.x;
       const dy = dropY - mouse.y;
       const dist = Math.sqrt(dx * dx + dy * dy);
-      const radius = 180;
+      const radius = drop.classList.contains('raindrop-glassy') ? 220 : 150;
 
       let targetX = 0, targetY = 0;
 
       if (mouse.active && dist < radius) {
         const force = (radius - dist) / radius;
         const angle = Math.atan2(dy, dx);
-        targetX = Math.cos(angle) * force * 80;
-        targetY = Math.sin(angle) * force * 80;
+        targetX = Math.cos(angle) * force * 70;
+        targetY = Math.sin(angle) * force * 70;
       }
 
       const ox = parseFloat(drop.dataset.ox);
       const oy = parseFloat(drop.dataset.oy);
-      const nx = ox + (targetX - ox) * 0.15;
-      const ny = oy + (targetY - oy) * 0.15;
+      const nx = ox + (targetX - ox) * 0.12;
+      const ny = oy + (targetY - oy) * 0.12;
 
       drop.dataset.ox = nx;
       drop.dataset.oy = ny;
-      drop.style.transform = `translate(${nx}px, ${ny}px)`;
+
+      // For glassy drops — already positioned with top, only offset
+      if (drop.classList.contains('raindrop-glassy')) {
+        drop.style.transform = `translate(${nx}px, ${ny}px)`;
+      } else {
+        drop.style.transform = `translateX(${nx}px)`;
+      }
     });
     requestAnimationFrame(animateRain);
   }
@@ -117,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // ===== TEXT DRIPS (on headings) =====
+  // ===== TEXT DRIPS =====
   const titles = document.querySelectorAll('.hero-title, .section-title, .cta h2');
   titles.forEach(title => {
     for (let i = 0; i < 10; i++) {
