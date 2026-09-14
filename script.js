@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ===== RAIN EFFECT (SLOW) =====
+  // ===== RAIN EFFECT (SLOW & ATMOSPHERIC) =====
   const rain = document.getElementById('rain');
   if (rain) {
     const dropsCount = 50;
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // ===== LIGHTNING (RARE) =====
+  // ===== LIGHTNING (RARE & SUBTLE) =====
   const lightning = document.getElementById('lightning');
   if (lightning) {
     setInterval(() => {
