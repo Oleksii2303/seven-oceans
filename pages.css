@@ -10,7 +10,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 180px 20px 100px; /* Збільшено зверху */
+  padding: 180px 20px 100px;
   overflow: hidden;
   background: linear-gradient(135deg, 
     #0a1929 0%, 
@@ -121,7 +121,6 @@
     0 30px 80px rgba(0, 0, 0, 0.4),
     0 0 100px rgba(0, 180, 216, 0.15),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  position: relative;
 }
 
 .product-detail-image::before {
