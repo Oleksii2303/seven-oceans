@@ -1,0 +1,257 @@
+/* ============================================= */
+/* ===== STYLES FOR INNER PAGES ===== */
+/* ============================================= */
+
+/* ===== PAGE HERO ===== */
+.page-hero {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 20px 80px;
+  overflow: hidden;
+  background: linear-gradient(135deg, 
+    #0a1929 0%, 
+    #00111f 50%,
+    #0a1a2e 100%
+  );
+  z-index: 2;
+}
+
+.page-hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: url('images/hero-ship.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.35;
+  z-index: -1;
+  animation: shipSway 15s ease-in-out infinite;
+}
+
+.page-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, 
+    rgba(0, 17, 31, 0.85) 0%,
+    rgba(0, 17, 31, 0.7) 50%,
+    rgba(0, 17, 31, 0.95) 100%
+  );
+  z-index: -1;
+}
+
+.page-hero-content {
+  position: relative;
+  z-index: 3;
+  max-width: 900px;
+  margin: 0 auto;
+  animation: fadeInUp 1.2s ease;
+}
+
+.page-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 72px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -2px;
+  margin: 24px 0;
+  color: var(--white);
+  text-shadow: 
+    0 0 60px rgba(0, 180, 216, 0.5),
+    0 6px 30px rgba(0, 0, 0, 0.9);
+}
+
+.page-title span {
+  background: linear-gradient(135deg, var(--blue-light), var(--blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.page-subtitle {
+  font-size: 20px;
+  color: var(--blue-light);
+  font-style: italic;
+  font-family: 'Playfair Display', serif;
+  margin-top: 16px;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.9);
+}
+
+/* ===== PAGE CONTENT ===== */
+.page-content {
+  padding: 100px 0 140px;
+  background: linear-gradient(180deg,
+    #00111f 0%,
+    #0a1929 5%,
+    #f8fafc 25%,
+    #ffffff 100%
+  );
+  position: relative;
+  z-index: 2;
+}
+
+/* ===== PRODUCT DETAIL GRID ===== */
+.product-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  margin-bottom: 120px;
+}
+
+.product-detail-image {
+  position: relative;
+}
+
+.product-detail-info h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px;
+  color: var(--navy);
+  margin: 20px 0 16px;
+  line-height: 1.1;
+  letter-spacing: -1px;
+}
+
+.product-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  color: var(--blue);
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.product-price span {
+  font-size: 16px;
+  color: var(--gray);
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  margin-left: 8px;
+}
+
+.product-desc {
+  font-size: 17px;
+  color: #475569;
+  line-height: 1.8;
+  margin-bottom: 32px;
+}
+
+.product-features {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 36px;
+}
+
+.product-features li {
+  padding: 12px 0;
+  font-size: 16px;
+  color: var(--navy);
+  border-bottom: 1px solid rgba(0, 61, 122, 0.08);
+}
+
+.product-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ===== SPECS TABLE ===== */
+.specs-section {
+  margin-bottom: 120px;
+}
+
+.specs-table {
+  max-width: 800px;
+  margin: 0 auto;
+  background: var(--white);
+  border-radius: 24px;
+  padding: 20px 32px;
+  box-shadow: 0 20px 60px rgba(0, 61, 122, 0.1);
+  border: 1px solid rgba(0, 61, 122, 0.08);
+}
+
+.spec-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(0, 61, 122, 0.08);
+  transition: all 0.2s ease;
+}
+
+.spec-row:last-child {
+  border-bottom: none;
+}
+
+.spec-row:hover {
+  background: rgba(0, 180, 216, 0.05);
+  margin: 0 -32px;
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+.spec-key {
+  font-size: 14px;
+  color: var(--gray);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 600;
+}
+
+.spec-val {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--navy);
+  text-align: right;
+}
+
+/* ===== GALLERY SECTION ===== */
+.gallery-section {
+  margin-bottom: 120px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 968px) {
+  .page-title {
+    font-size: 48px;
+  }
+  .page-hero {
+    min-height: 50vh;
+    padding: 100px 20px 60px;
+  }
+  .product-detail-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .product-detail-info h2 {
+    font-size: 32px;
+  }
+  .product-price {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 36px;
+    letter-spacing: -1px;
+  }
+  .page-subtitle {
+    font-size: 16px;
+  }
+  .product-detail-info h2 {
+    font-size: 26px;
+  }
+  .specs-table {
+    padding: 16px 20px;
+  }
+  .spec-row:hover {
+    margin: 0 -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
