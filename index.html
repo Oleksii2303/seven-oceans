@@ -3,15 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Seven Oceans — Emergency Food Ration | 5-Year Shelf Life</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Seven Oceans — Emergency Food Ration | Built for the Storm</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="storm">
 
-  <!-- NAVIGATION -->
+  <!-- ===== RAIN LAYER ===== -->
+  <div class="rain" id="rain"></div>
+  
+  <!-- ===== LIGHTNING FLASH ===== -->
+  <div class="lightning" id="lightning"></div>
+
+  <!-- ===== OCEAN WAVES (SVG) ===== -->
+  <div class="ocean-waves">
+    <svg class="wave wave1" viewBox="0 0 1440 320" preserveAspectRatio="none">
+      <path fill="rgba(0, 180, 216, 0.15)" d="M0,160L48,170.7C96,181,192,203,288,197.3C384,192,480,160,576,149.3C672,139,768,149,864,165.3C960,181,1056,203,1152,197.3C1248,192,1344,160,1392,144L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+    </svg>
+    <svg class="wave wave2" viewBox="0 0 1440 320" preserveAspectRatio="none">
+      <path fill="rgba(0, 180, 216, 0.1)" d="M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,213.3C672,224,768,224,864,213.3C960,203,1056,181,1152,181.3C1248,181,1344,203,1392,213.3L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+    </svg>
+  </div>
+
+  <!-- ===== NAVIGATION ===== -->
   <nav class="navbar">
     <div class="nav-container">
       <a href="index.html" class="logo">
@@ -29,39 +45,77 @@
     </div>
   </nav>
 
-  <!-- HERO -->
+  <!-- ===== HERO — WET DECK ===== -->
   <section class="hero">
-    <div class="hero-bg"></div>
+    
+    <!-- WET DECK BACKGROUND -->
+    <div class="deck-bg">
+      <div class="deck-planks"></div>
+      <div class="deck-shine"></div>
+      <div class="fog"></div>
+    </div>
+
     <div class="hero-content">
-      <div class="hero-badge">⚡ Trusted by Professionals Worldwide</div>
-      <h1 class="hero-title">SEVEN OCEANS</h1>
+      <div class="hero-badge">⚓ Trusted by Sailors Worldwide</div>
+      
+      <h1 class="hero-title">
+        <span class="title-line1">SEVEN</span>
+        <span class="title-line2">OCEANS</span>
+      </h1>
+      
+      <div class="hero-divider"></div>
+      
       <p class="hero-subtitle">Standard Emergency Food Ration</p>
+      
       <p class="hero-desc">
-        5-year shelf life. 2,430 kcal per box. Waterproof packaging.<br>
-        Built for boats, cars, backpacks — and peace of mind.
+        When the storm hits and land is out of sight — <strong>you need food that lasts.</strong><br>
+        5 years of shelf life. 2,430 kcal per box. Waterproof, airtight, unstoppable.<br>
+        <em>Built for the moments when everything else fails.</em>
       </p>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-value">5<span>yr</span></div>
+          <div class="stat-label">Shelf Life</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">2,430<span>kcal</span></div>
+          <div class="stat-label">Per Box</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">100<span>%</span></div>
+          <div class="stat-label">Waterproof</div>
+        </div>
+      </div>
+
       <div class="hero-rating">
         <span class="stars">⭐⭐⭐⭐⭐</span>
         <span class="rating-text">4.2 · 128 reviews</span>
       </div>
+
       <div class="hero-price">
         <span class="price">$39.95</span>
         <span class="price-detail">500g · 9 bars · 17.6 oz</span>
       </div>
+
       <div class="hero-buttons">
-        <a href="contact.html" class="btn btn-primary">Order Now</a>
+        <a href="contact.html" class="btn btn-primary">⚓ Order Now</a>
         <a href="product.html" class="btn btn-secondary">Learn More</a>
       </div>
     </div>
+
     <div class="hero-image">
+      <div class="water-drops"></div>
       <img src="images/box-front.jpg" alt="Seven Oceans Emergency Food Ration">
+      <div class="image-reflection"></div>
     </div>
   </section>
 
-  <!-- FEATURES -->
+  <!-- ===== FEATURES ===== -->
   <section class="features">
     <div class="container">
-      <h2 class="section-title">Why Choose Seven Oceans</h2>
+      <h2 class="section-title">Built for the Storm</h2>
+      <p class="section-subtitle">Every detail engineered for survival</p>
       <div class="features-grid">
         <div class="feature-card">
           <div class="feature-icon">⏱️</div>
@@ -82,10 +136,11 @@
     </div>
   </section>
 
-  <!-- GALLERY -->
+  <!-- ===== GALLERY ===== -->
   <section class="gallery">
     <div class="container">
       <h2 class="section-title">Product Gallery</h2>
+      <p class="section-subtitle">See what's inside the box</p>
       <div class="gallery-grid">
         <div class="gallery-item large">
           <img src="images/box-front.jpg" alt="Box Front">
@@ -106,7 +161,7 @@
     </div>
   </section>
 
-  <!-- SPECS -->
+  <!-- ===== SPECS ===== -->
   <section class="specs">
     <div class="container">
       <h2 class="section-title">Quick Specs</h2>
@@ -139,7 +194,7 @@
     </div>
   </section>
 
-  <!-- CTA -->
+  <!-- ===== CTA ===== -->
   <section class="cta">
     <div class="container">
       <h2>Ready When You Are</h2>
@@ -151,7 +206,7 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- ===== FOOTER ===== -->
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
