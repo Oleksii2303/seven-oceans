@@ -1,4 +1,4 @@
-// ===== MOBILE MENU + RAIN + LIGHTNING + DRIPS + MOUSE INTERACTION =====
+// ===== ADVANCED: RAIN + MOUSE + DRIPS =====
 document.addEventListener('DOMContentLoaded', () => {
 
   // ===== MOBILE MENU =====
@@ -17,177 +17,121 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ===== CREATE CURSOR GLOW =====
+  // ===== CURSOR GLOW =====
   const cursorGlow = document.createElement('div');
   cursorGlow.className = 'cursor-glow';
   document.body.appendChild(cursorGlow);
 
-  // ===== MOUSE POSITION TRACKING =====
-  const mouse = { x: -1000, y: -1000 };
-  let mouseActive = false;
+  const mouse = { x: -9999, y: -9999, active: false };
 
   document.addEventListener('mousemove', (e) => {
     mouse.x = e.clientX;
     mouse.y = e.clientY;
-    mouseActive = true;
+    mouse.active = true;
     cursorGlow.style.left = e.clientX + 'px';
     cursorGlow.style.top = e.clientY + 'px';
   });
 
   document.addEventListener('mouseleave', () => {
-    mouse.x = -1000;
-    mouse.y = -1000;
-    mouseActive = false;
+    mouse.x = -9999;
+    mouse.y = -9999;
+    mouse.active = false;
   });
 
-  // ===== RAIN EFFECT (INTERACTIVE) =====
+  // ===== INTERACTIVE RAIN =====
   const rain = document.getElementById('rain');
   const raindrops = [];
 
   if (rain) {
-    const dropsCount = 60;
+    const dropsCount = 80;
     for (let i = 0; i < dropsCount; i++) {
       const drop = document.createElement('div');
       drop.className = 'raindrop';
       drop.style.left = Math.random() * 100 + '%';
-      drop.style.animationDuration = (2.5 + Math.random() * 2.5) + 's';
+      drop.style.animationDuration = (1.8 + Math.random() * 2) + 's';
       drop.style.animationDelay = Math.random() * 5 + 's';
-      drop.style.height = (20 + Math.random() * 30) + 'px';
-      drop.style.opacity = 0.15 + Math.random() * 0.35;
-
-      // Store speed multiplier for physics
-      drop.dataset.speed = 0.5 + Math.random() * 0.5;
-      drop.dataset.offsetX = 0;
-      drop.dataset.offsetY = 0;
-
+      drop.style.height = (25 + Math.random() * 40) + 'px';
+      drop.style.opacity = 0.4 + Math.random() * 0.5;
+      drop.dataset.ox = 0;
+      drop.dataset.oy = 0;
       rain.appendChild(drop);
       raindrops.push(drop);
     }
   }
 
-  // ===== RAIN PHYSICS (MOUSE REPULSION) =====
-  let lastTime = performance.now();
-
-  function animateRain(currentTime) {
-    const deltaTime = Math.min((currentTime - lastTime) / 16, 3);
-    lastTime = currentTime;
-
+  // Physics loop for rain repulsion
+  function animateRain() {
     raindrops.forEach(drop => {
       const rect = drop.getBoundingClientRect();
       const dropX = rect.left + rect.width / 2;
       const dropY = rect.top + rect.height / 2;
-
-      // Distance from mouse
       const dx = dropX - mouse.x;
       const dy = dropY - mouse.y;
-      const distance = Math.sqrt(dx * dx + dy * dy);
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      const radius = 180;
 
-      // Repulsion radius
-      const repulsionRadius = 150;
+      let targetX = 0, targetY = 0;
 
-      if (distance < repulsionRadius && mouseActive) {
-        // Push drop away from cursor
-        const force = (repulsionRadius - distance) / repulsionRadius;
+      if (mouse.active && dist < radius) {
+        const force = (radius - dist) / radius;
         const angle = Math.atan2(dy, dx);
-
-        // Target offset
-        const targetOffsetX = Math.cos(angle) * force * 60;
-        const targetOffsetY = Math.sin(angle) * force * 60;
-
-        // Smooth transition
-        const currentOffsetX = parseFloat(drop.dataset.offsetX) || 0;
-        const currentOffsetY = parseFloat(drop.dataset.offsetY) || 0;
-
-        const newOffsetX = currentOffsetX + (targetOffsetX - currentOffsetX) * 0.15;
-        const newOffsetY = currentOffsetY + (targetOffsetY - currentOffsetY) * 0.15;
-
-        drop.dataset.offsetX = newOffsetX;
-        drop.dataset.offsetY = newOffsetY;
-
-        drop.style.transform = `translate(${newOffsetX}px, ${newOffsetY}px)`;
-        drop.classList.add('pushed');
-      } else {
-        // Return to normal
-        const currentOffsetX = parseFloat(drop.dataset.offsetX) || 0;
-        const currentOffsetY = parseFloat(drop.dataset.offsetY) || 0;
-
-        const newOffsetX = currentOffsetX * 0.9;
-        const newOffsetY = currentOffsetY * 0.9;
-
-        drop.dataset.offsetX = newOffsetX;
-        drop.dataset.offsetY = newOffsetY;
-
-        if (Math.abs(newOffsetX) > 0.1 || Math.abs(newOffsetY) > 0.1) {
-          drop.style.transform = `translate(${newOffsetX}px, ${newOffsetY}px)`;
-        } else {
-          drop.style.transform = '';
-        }
-        drop.classList.remove('pushed');
+        targetX = Math.cos(angle) * force * 80;
+        targetY = Math.sin(angle) * force * 80;
       }
-    });
 
+      const ox = parseFloat(drop.dataset.ox);
+      const oy = parseFloat(drop.dataset.oy);
+      const nx = ox + (targetX - ox) * 0.15;
+      const ny = oy + (targetY - oy) * 0.15;
+
+      drop.dataset.ox = nx;
+      drop.dataset.oy = ny;
+      drop.style.transform = `translate(${nx}px, ${ny}px)`;
+    });
     requestAnimationFrame(animateRain);
   }
-
   requestAnimationFrame(animateRain);
 
   // ===== LIGHTNING =====
   const lightning = document.getElementById('lightning');
   if (lightning) {
     setInterval(() => {
-      if (Math.random() < 0.15) {
+      if (Math.random() < 0.18) {
         lightning.classList.add('flash');
         setTimeout(() => lightning.classList.remove('flash'), 800);
       }
-    }, 12000);
+    }, 10000);
   }
 
-  // ===== PRODUCT DRIPS (DYNAMIC) =====
+  // ===== PRODUCT DRIPS =====
   const productDrips = document.querySelector('.product-drips');
   if (productDrips) {
-    const dropsData = [
-      { left: 8, delay: 0, height: 40 },
-      { left: 18, delay: 0.8, height: 55 },
-      { left: 30, delay: 1.6, height: 70 },
-      { left: 42, delay: 0.4, height: 50 },
-      { left: 55, delay: 2.0, height: 65 },
-      { left: 68, delay: 1.2, height: 45 },
-      { left: 80, delay: 0.6, height: 60 },
-      { left: 92, delay: 1.8, height: 48 }
-    ];
-
-    dropsData.forEach(data => {
+    for (let i = 0; i < 10; i++) {
       const drop = document.createElement('span');
       drop.className = 'product-drop';
-      drop.style.left = data.left + '%';
-      drop.style.animationDelay = data.delay + 's';
+      drop.style.left = (5 + i * 9) + '%';
+      drop.style.animationDelay = (i * 0.4) + 's';
       drop.style.animationDuration = (3 + Math.random() * 2) + 's';
-      drop.style.height = data.height + 'px';
+      drop.style.height = (30 + Math.random() * 40) + 'px';
       productDrips.appendChild(drop);
-    });
+    }
   }
 
-  // ===== TEXT DRIPS (EVERY HEADING) =====
+  // ===== TEXT DRIPS (on headings) =====
   const titles = document.querySelectorAll('.hero-title, .section-title, .cta h2');
   titles.forEach(title => {
-    const dripCount = 8;
-    for (let i = 0; i < dripCount; i++) {
+    for (let i = 0; i < 10; i++) {
       const drip = document.createElement('span');
       drip.className = 'text-drip';
-      drip.style.left = (5 + (i * 12)) + '%';
-      drip.style.animationDelay = (i * 0.6) + 's';
+      drip.style.left = (5 + i * 10) + '%';
+      drip.style.animationDelay = (i * 0.5) + 's';
       drip.style.animationDuration = (4 + Math.random() * 2) + 's';
-      drip.style.height = (20 + Math.random() * 30) + 'px';
+      drip.style.height = (25 + Math.random() * 35) + 'px';
       title.appendChild(drip);
     }
   });
 
   // ===== SCROLL ANIMATION =====
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  };
-
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -195,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
         entry.target.style.transform = 'translateY(0)';
       }
     });
-  }, observerOptions);
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
   document.querySelectorAll('.feature-card, .spec-item, .gallery-item').forEach(el => {
     el.style.opacity = '0';
