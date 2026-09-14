@@ -10,7 +10,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 120px 20px 80px;
+  padding: 180px 20px 100px; /* Збільшено зверху */
   overflow: hidden;
   background: linear-gradient(135deg, 
     #0a1929 0%, 
@@ -37,7 +37,7 @@
   position: absolute;
   inset: 0;
   background: linear-gradient(180deg, 
-    rgba(0, 17, 31, 0.85) 0%,
+    rgba(0, 17, 31, 0.9) 0%,
     rgba(0, 17, 31, 0.7) 50%,
     rgba(0, 17, 31, 0.95) 100%
   );
@@ -56,7 +56,7 @@
   font-family: 'Playfair Display', serif;
   font-size: 72px;
   font-weight: 900;
-  line-height: 1;
+  line-height: 1.1;
   letter-spacing: -2px;
   margin: 24px 0;
   color: var(--white);
@@ -105,6 +105,53 @@
 
 .product-detail-image {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  background: linear-gradient(135deg, 
+    rgba(0, 180, 216, 0.08) 0%, 
+    rgba(0, 17, 31, 0.3) 50%,
+    rgba(0, 180, 216, 0.05) 100%
+  );
+  border-radius: 32px;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 180, 216, 0.3);
+  box-shadow: 
+    0 30px 80px rgba(0, 0, 0, 0.4),
+    0 0 100px rgba(0, 180, 216, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+
+.product-detail-image::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 34px;
+  padding: 2px;
+  background: linear-gradient(135deg, 
+    rgba(0, 180, 216, 0.8),
+    rgba(144, 224, 239, 0.2),
+    rgba(244, 169, 0, 0.6),
+    rgba(0, 180, 216, 0.8)
+  );
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: borderRotate 4s linear infinite;
+  pointer-events: none;
+}
+
+.product-detail-image img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  display: block;
+  border-radius: 16px;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.5));
 }
 
 .product-detail-info h2 {
@@ -114,6 +161,19 @@
   margin: 20px 0 16px;
   line-height: 1.1;
   letter-spacing: -1px;
+}
+
+.product-detail-info .hero-badge {
+  display: inline-block;
+  padding: 8px 20px;
+  background: rgba(0, 180, 216, 0.15);
+  color: var(--blue);
+  border: 1px solid rgba(0, 180, 216, 0.4);
+  border-radius: 40px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
 .product-price {
@@ -216,12 +276,12 @@
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 968px) {
-  .page-title {
-    font-size: 48px;
-  }
   .page-hero {
     min-height: 50vh;
-    padding: 100px 20px 60px;
+    padding: 140px 20px 60px;
+  }
+  .page-title {
+    font-size: 48px;
   }
   .product-detail-grid {
     grid-template-columns: 1fr;
@@ -236,6 +296,9 @@
 }
 
 @media (max-width: 768px) {
+  .page-hero {
+    padding: 120px 20px 60px;
+  }
   .page-title {
     font-size: 36px;
     letter-spacing: -1px;
