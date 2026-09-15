@@ -323,20 +323,6 @@ h1, h2, h3, h4 {
   position: relative;
   overflow: hidden;
 }
-.btn::before {
-  content: '';
-  position: absolute;
-  top: 50%; left: 50%;
-  width: 0; height: 0;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.3);
-  transform: translate(-50%, -50%);
-  transition: width 0.6s, height 0.6s;
-}
-.btn:hover::before {
-  width: 400px;
-  height: 400px;
-}
 .btn-primary {
   background: linear-gradient(135deg, var(--blue), var(--blue-light));
   color: var(--navy-deep); font-weight: 700;
@@ -359,27 +345,20 @@ h1, h2, h3, h4 {
 }
 .btn-large { padding: 20px 52px; font-size: 18px; }
 
-/* ===== FEATURES (with wave top) ===== */
+/* ===== FEATURES (gradient transition top) ===== */
 .features {
   position: relative;
-  padding: 140px 0 120px;
-  background: linear-gradient(180deg, #0a1929 0%, #1a3a5c 8%, #d5e8f0 25%, #f8fafc 50%, #ffffff 100%);
+  padding: 160px 0 120px;
+  background: linear-gradient(180deg, 
+    #00111f 0%, 
+    #0a1929 20%,
+    #1a3a5c 40%,
+    #d5e8f0 65%,
+    #f8fafc 85%,
+    #ffffff 100%
+  );
   z-index: 2;
   margin-top: -1px;
-}
-
-/* Wave at top of features */
-.features::before {
-  content: '';
-  position: absolute;
-  top: -80px;
-  left: 0;
-  width: 100%;
-  height: 80px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z' fill='%230a1929'%3E%3C/path%3E%3C/svg%3E");
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  z-index: 1;
 }
 
 .section-title {
@@ -436,27 +415,20 @@ h1, h2, h3, h4 {
 }
 .feature-card p { color: var(--gray); font-size: 15px; line-height: 1.7; }
 
-/* ===== GALLERY (with wave top) ===== */
+/* ===== GALLERY (gradient transition top) ===== */
 .gallery {
-  padding: 140px 0 120px;
-  background: var(--navy-deep);
+  padding: 160px 0 120px;
+  background: linear-gradient(180deg,
+    #ffffff 0%,
+    #f8fafc 10%,
+    #d5e8f0 25%,
+    #1a3a5c 50%,
+    #0a1929 75%,
+    #00111f 100%
+  );
   position: relative;
   overflow: hidden;
   margin-top: -1px;
-}
-
-/* Wave at top of gallery */
-.gallery::before {
-  content: '';
-  position: absolute;
-  top: -80px;
-  left: 0;
-  width: 100%;
-  height: 80px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z' fill='%23ffffff'%3E%3C/path%3E%3C/svg%3E");
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  z-index: 1;
 }
 
 .gallery .container { position: relative; z-index: 2; }
@@ -496,26 +468,19 @@ h1, h2, h3, h4 {
 }
 .gallery-item:hover img { transform: scale(1.08); }
 
-/* ===== SPECS (3 columns, with wave top) ===== */
+/* ===== SPECS (gradient transition top, 3 columns) ===== */
 .specs {
   position: relative;
-  padding: 140px 0 120px;
-  background: linear-gradient(180deg, #00111f 0%, #0a1929 20%, #f8fafc 60%, #ffffff 100%);
+  padding: 160px 0 120px;
+  background: linear-gradient(180deg,
+    #00111f 0%,
+    #0a1929 20%,
+    #1a3a5c 40%,
+    #d5e8f0 65%,
+    #f8fafc 85%,
+    #ffffff 100%
+  );
   margin-top: -1px;
-}
-
-/* Wave at top of specs */
-.specs::before {
-  content: '';
-  position: absolute;
-  top: -80px;
-  left: 0;
-  width: 100%;
-  height: 80px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z' fill='%2300111f'%3E%3C/path%3E%3C/svg%3E");
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  z-index: 1;
 }
 
 .specs-grid {
