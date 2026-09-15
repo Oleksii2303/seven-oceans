@@ -88,33 +88,19 @@
   text-shadow: 0 2px 20px rgba(0, 0, 0, 0.9);
 }
 
-/* ===== PAGE CONTENT (with wave top) ===== */
+/* ===== PAGE CONTENT ===== */
 .page-content {
   position: relative;
   padding: 120px 0 140px;
   background: linear-gradient(180deg,
-    #0a1929 0%,
-    #102a44 15%,
-    #1a3a5c 35%,
-    #0f2538 65%,
+    #00111f 0%,
+    #0a1929 15%,
+    #102a44 35%,
+    #0a1929 60%,
     #00111f 100%
   );
   z-index: 2;
   margin-top: -1px;
-}
-
-/* Wave divider at top of page-content */
-.page-content::before {
-  content: '';
-  position: absolute;
-  top: -80px;
-  left: 0;
-  width: 100%;
-  height: 80px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z' fill='%2300111f'%3E%3C/path%3E%3C/svg%3E");
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  z-index: 1;
 }
 
 /* ===== PRODUCT DETAIL GRID ===== */
@@ -294,7 +280,135 @@
   box-shadow: 0 12px 32px rgba(0, 180, 216, 0.5);
 }
 
-/* ===== SPECS TABLE ===== */
+/* ===== NUTRITION PAGE STYLES ===== */
+
+/* Nutrition overview grid */
+.nutrition-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  margin-bottom: 140px;
+}
+
+.nutrition-image {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 48px 40px;
+  background: linear-gradient(135deg, 
+    rgba(0, 180, 216, 0.06) 0%, 
+    rgba(0, 17, 31, 0.4) 50%,
+    rgba(0, 180, 216, 0.04) 100%
+  );
+  border-radius: 32px;
+  backdrop-filter: blur(20px);
+  border: none;
+  box-shadow: 
+    0 30px 80px rgba(0, 0, 0, 0.5),
+    0 0 120px rgba(0, 180, 216, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.nutrition-image::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 32px;
+  padding: 2px;
+  background: linear-gradient(135deg, 
+    rgba(0, 180, 216, 1),
+    rgba(144, 224, 239, 0.3),
+    rgba(244, 169, 0, 0.8),
+    rgba(0, 180, 216, 1)
+  );
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: borderRotate 4s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.nutrition-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 32px;
+  pointer-events: none;
+  background-image: 
+    radial-gradient(circle 8px at 0% 0%, rgba(0, 180, 216, 1), transparent 60%),
+    radial-gradient(circle 8px at 100% 0%, rgba(0, 180, 216, 1), transparent 60%),
+    radial-gradient(circle 8px at 0% 100%, rgba(0, 180, 216, 1), transparent 60%),
+    radial-gradient(circle 8px at 100% 100%, rgba(0, 180, 216, 1), transparent 60%);
+  z-index: 2;
+  animation: cornerPulse 3s ease-in-out infinite;
+}
+
+.nutrition-image img {
+  width: 100%;
+  max-width: 450px;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  position: relative;
+  z-index: 3;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.6));
+}
+
+.nutrition-info h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 42px;
+  color: var(--white);
+  margin: 20px 0 16px;
+  line-height: 1.1;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+}
+
+.nutrition-desc {
+  font-size: 17px;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.8;
+  margin-bottom: 32px;
+}
+
+.nutrition-highlights {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 36px;
+  padding: 24px 0;
+  border-top: 1px solid rgba(0, 180, 216, 0.3);
+  border-bottom: 1px solid rgba(0, 180, 216, 0.3);
+}
+
+.highlight-item {
+  text-align: center;
+}
+
+.highlight-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--blue-light);
+  text-shadow: 0 0 30px rgba(0, 180, 216, 0.6);
+  line-height: 1;
+}
+
+.highlight-label {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.65);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-top: 8px;
+  font-weight: 600;
+}
+
+/* ===== NUTRITION TABLE ===== */
 .specs-section {
   margin-bottom: 140px;
   position: relative;
@@ -305,10 +419,10 @@
 }
 
 .specs-section .section-subtitle {
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.85);
 }
 
-.specs-table {
+.nutrition-table {
   max-width: 800px;
   margin: 0 auto;
   background: linear-gradient(135deg, rgba(30, 41, 59, 0.85), rgba(15, 23, 42, 0.9));
@@ -322,114 +436,194 @@
   border: 1px solid rgba(0, 180, 216, 0.2);
 }
 
-.spec-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 18px 0;
+.nutrition-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 16px;
+  padding: 14px 0;
   border-bottom: 1px solid rgba(0, 180, 216, 0.1);
   transition: all 0.2s ease;
+  align-items: center;
 }
 
-.spec-row:last-child {
+.nutrition-row:last-child {
   border-bottom: none;
 }
 
-.spec-row:hover {
+.nutrition-row.header {
+  border-bottom: 2px solid rgba(0, 180, 216, 0.4);
+  padding-bottom: 16px;
+}
+
+.nutrition-row.header .nutrition-key,
+.nutrition-row.header .nutrition-val,
+.nutrition-row.header .nutrition-dv {
+  font-size: 12px;
+  color: var(--blue-light);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+}
+
+.nutrition-row.highlight {
+  background: rgba(244, 169, 0, 0.1);
+  margin: 0 -32px;
+  padding-left: 32px;
+  padding-right: 32px;
+  border-left: 4px solid var(--gold);
+}
+
+.nutrition-row.sub {
+  padding-left: 20px;
+}
+
+.nutrition-row.sub .nutrition-key {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.nutrition-row.vitamin .nutrition-key {
+  color: var(--blue-light);
+}
+
+.nutrition-row:hover {
   background: rgba(0, 180, 216, 0.08);
   margin: 0 -32px;
   padding-left: 32px;
   padding-right: 32px;
 }
 
-.spec-key {
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.6);
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
-  font-weight: 600;
+.nutrition-key {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
 }
 
-.spec-val {
+.nutrition-val {
   font-family: 'Playfair Display', serif;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 700;
+  color: var(--white);
+  text-align: center;
+}
+
+.nutrition-dv {
+  font-size: 14px;
   color: var(--blue-light);
+  font-weight: 600;
   text-align: right;
 }
 
-/* ===== GALLERY SECTION ===== */
-.gallery-section {
-  margin-bottom: 100px;
-  position: relative;
+/* ===== INGREDIENTS GRID ===== */
+.ingredients-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
-/* ===== WAVE DIVIDERS ===== */
-
-/* Wave between sections */
-.wave-divider {
-  position: relative;
-  height: 100px;
-  overflow: hidden;
-  margin-top: -1px;
+.ingredient-card {
+  padding: 40px 28px;
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.85), rgba(15, 23, 42, 0.9));
+  border-radius: 20px;
+  border: 1px solid rgba(0, 180, 216, 0.2);
+  text-align: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(20px);
 }
 
-.wave-divider svg {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+.ingredient-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(0, 180, 216, 0.6);
+  box-shadow: 0 20px 40px rgba(0, 180, 216, 0.2);
+}
+
+.ingredient-icon {
+  font-size: 48px;
+  margin-bottom: 20px;
   display: block;
+  filter: drop-shadow(0 8px 16px rgba(0, 180, 216, 0.3));
+}
+
+.ingredient-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  color: var(--white);
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.ingredient-card p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* ===== INFO GRID ===== */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.info-card {
+  padding: 40px 28px;
+  border-radius: 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(20px);
+  border: 2px solid;
+}
+
+.info-card.warning {
+  background: linear-gradient(135deg, rgba(244, 169, 0, 0.1), rgba(217, 119, 6, 0.05));
+  border-color: rgba(244, 169, 0, 0.4);
+}
+
+.info-card.good {
+  background: linear-gradient(135deg, rgba(0, 180, 216, 0.1), rgba(0, 100, 140, 0.05));
+  border-color: rgba(0, 180, 216, 0.4);
+}
+
+.info-card.storage {
+  background: linear-gradient(135deg, rgba(144, 224, 239, 0.1), rgba(0, 180, 216, 0.05));
+  border-color: rgba(144, 224, 239, 0.4);
+}
+
+.info-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 180, 216, 0.2);
+}
+
+.info-icon {
+  font-size: 48px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.info-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  color: var(--white);
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
+.info-card p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 6px;
+}
+
+.info-card p strong {
+  color: var(--blue-light);
 }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 968px) {
   .page-hero {
-    min-height: 40vh;
-    padding: 160px 20px 60px;
-  }
-  .page-title {
-    font-size: 48px;
-  }
-  .product-detail-grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-  .product-detail-info h2 {
-    font-size: 32px;
-  }
-  .product-price {
-    font-size: 36px;
-  }
-  .product-detail-image img {
-    max-width: 420px;
-  }
-}
-
-@media (max-width: 768px) {
-  .page-hero {
-    padding: 140px 20px 60px;
-  }
-  .page-title {
-    font-size: 36px;
-    letter-spacing: -1px;
-  }
-  .page-subtitle {
-    font-size: 16px;
-  }
-  .product-detail-info h2 {
-    font-size: 26px;
-  }
-  .product-detail-image img {
-    max-width: 100%;
-  }
-  .specs-table {
-    padding: 16px 20px;
-  }
-  .spec-row:hover {
-    margin: 0 -20px;
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-}
+   
