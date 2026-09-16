@@ -10,7 +10,10 @@
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="pages.css">
 </head>
-<body>
+<body class="storm">
+
+  <div class="rain" id="rain"></div>
+  <div class="lightning" id="lightning"></div>
 
   <nav class="navbar">
     <div class="nav-container">
@@ -33,180 +36,141 @@
     <div class="page-hero-content">
       <div class="hero-badge">🥗 Nutrition Facts</div>
       <h1 class="page-title">Fuel for <span>Survival</span></h1>
-      <p class="page-subtitle">Every calorie engineered for maximum performance</p>
+      <p class="page-subtitle">Balanced nutrition, engineered for the toughest conditions</p>
     </div>
   </section>
 
   <section class="page-content">
     <div class="container">
 
-      <!-- COMPLETE NUTRITION -->
-      <div class="nutrition-grid">
-        <div class="nutrition-image">
-          <img src="images/nutrition.png" alt="Seven Oceans Nutrition Facts">
+      <!-- INTRO -->
+      <div class="nutrition-intro-section">
+        <div class="nutrition-intro-image">
+          <img src="images/nutrition.jpg" alt="Nutrition Facts">
         </div>
-
-        <div class="nutrition-info">
-          <div class="hero-badge">Per Box</div>
-          <h2>Complete Nutrition</h2>
-
-          <p class="nutrition-desc">
-            <strong>9 bars. 2,430 kcal. 5 years of shelf life.</strong><br><br>
-            Engineered to deliver balanced nutrition when it matters most — whether you're at sea, on the road, or preparing for the unexpected.<br><br>
-            Halal certified. Vegetarian-friendly. Made in Norway. 🇳🇴
+        <div class="nutrition-intro-text">
+          <h2>Complete Nutrition in Every Box</h2>
+          <p>
+            Every Seven Oceans bar is precisely engineered to deliver <strong>maximum calories</strong> in the <strong>smallest possible volume</strong> — with a complete vitamin profile that supports survival in extreme conditions.
           </p>
-
-          <div class="nutrition-highlights">
-            <div class="highlight-item">
-              <div class="highlight-value">2,430</div>
-              <div class="highlight-label">kcal Total</div>
-            </div>
-            <div class="highlight-item">
-              <div class="highlight-value">270</div>
-              <div class="highlight-label">kcal / Bar</div>
-            </div>
-            <div class="highlight-item">
-              <div class="highlight-value">9</div>
-              <div class="highlight-label">Bars</div>
-            </div>
-          </div>
-
-          <div class="product-actions">
-            <a href="contact.html" class="btn btn-primary">⚓ Order Now — $39.95</a>
-            <a href="product.html" class="btn btn-secondary">Back to Product</a>
-          </div>
+          <p>
+            9 bars. 2,430 calories. 5 years of shelf life. <strong>No refrigeration. No cooking. No compromises.</strong>
+          </p>
         </div>
       </div>
 
       <!-- NUTRITION FACTS TABLE -->
-      <div class="specs-section">
+      <div class="nutrition-facts-section">
         <h2 class="section-title">Nutrition Facts</h2>
-        <p class="section-subtitle">Per bar (56g) — 9 servings per container</p>
+        <p class="section-subtitle">Serving size: 1 bar (56g) · 9 servings per container</p>
 
         <div class="nutrition-table">
-          <div class="nutrition-row header">
-            <div class="nutrition-key">Nutrient</div>
-            <div class="nutrition-val">Amount</div>
-            <div class="nutrition-dv">% Daily Value</div>
+          <div class="nutrition-header">
+            <div class="nutrition-header-cell">Nutrient</div>
+            <div class="nutrition-header-cell">Amount</div>
+            <div class="nutrition-header-cell">% Daily Value</div>
           </div>
 
-          <div class="nutrition-row highlight">
-            <div class="nutrition-key"><strong>Calories</strong></div>
-            <div class="nutrition-val"><strong>270</strong></div>
-            <div class="nutrition-dv">—</div>
+          <div class="nutrition-row big">
+            <div class="nutrition-cell"><strong>Calories</strong></div>
+            <div class="nutrition-cell"><strong>270</strong></div>
+            <div class="nutrition-cell"></div>
           </div>
 
           <div class="nutrition-row">
-            <div class="nutrition-key">Total Fat</div>
-            <div class="nutrition-val">11g</div>
-            <div class="nutrition-dv">14%</div>
+            <div class="nutrition-cell">Total Fat</div>
+            <div class="nutrition-cell">11g</div>
+            <div class="nutrition-cell">14%</div>
           </div>
-
           <div class="nutrition-row sub">
-            <div class="nutrition-key">Saturated Fat</div>
-            <div class="nutrition-val">6g</div>
-            <div class="nutrition-dv">30%</div>
+            <div class="nutrition-cell">Saturated Fat</div>
+            <div class="nutrition-cell">6g</div>
+            <div class="nutrition-cell">30%</div>
           </div>
-
           <div class="nutrition-row sub">
-            <div class="nutrition-key">Trans Fat</div>
-            <div class="nutrition-val">0g</div>
-            <div class="nutrition-dv">—</div>
+            <div class="nutrition-cell">Trans Fat</div>
+            <div class="nutrition-cell">0g</div>
+            <div class="nutrition-cell"></div>
           </div>
-
           <div class="nutrition-row">
-            <div class="nutrition-key">Cholesterol</div>
-            <div class="nutrition-val">0mg</div>
-            <div class="nutrition-dv">0%</div>
+            <div class="nutrition-cell">Cholesterol</div>
+            <div class="nutrition-cell">0mg</div>
+            <div class="nutrition-cell">0%</div>
           </div>
-
           <div class="nutrition-row">
-            <div class="nutrition-key">Sodium</div>
-            <div class="nutrition-val">0mg</div>
-            <div class="nutrition-dv">0%</div>
+            <div class="nutrition-cell">Sodium</div>
+            <div class="nutrition-cell">0mg</div>
+            <div class="nutrition-cell">0%</div>
           </div>
-
           <div class="nutrition-row">
-            <div class="nutrition-key">Total Carbohydrate</div>
-            <div class="nutrition-val">38g</div>
-            <div class="nutrition-dv">14%</div>
+            <div class="nutrition-cell">Total Carbohydrate</div>
+            <div class="nutrition-cell">38g</div>
+            <div class="nutrition-cell">14%</div>
           </div>
-
           <div class="nutrition-row sub">
-            <div class="nutrition-key">Dietary Fiber</div>
-            <div class="nutrition-val">2g</div>
-            <div class="nutrition-dv">7%</div>
+            <div class="nutrition-cell">Dietary Fiber</div>
+            <div class="nutrition-cell">2g</div>
+            <div class="nutrition-cell">7%</div>
+          </div>
+          <div class="nutrition-row sub">
+            <div class="nutrition-cell">Total Sugars</div>
+            <div class="nutrition-cell">9g</div>
+            <div class="nutrition-cell"></div>
+          </div>
+          <div class="nutrition-row">
+            <div class="nutrition-cell"><strong>Protein</strong></div>
+            <div class="nutrition-cell"><strong>5g</strong></div>
+            <div class="nutrition-cell"></div>
           </div>
 
-          <div class="nutrition-row sub">
-            <div class="nutrition-key">Total Sugars</div>
-            <div class="nutrition-val">9g</div>
-            <div class="nutrition-dv">18%</div>
-          </div>
+          <div class="nutrition-divider"></div>
 
           <div class="nutrition-row">
-            <div class="nutrition-key"><strong>Protein</strong></div>
-            <div class="nutrition-val"><strong>5g</strong></div>
-            <div class="nutrition-dv">—</div>
+            <div class="nutrition-cell">Vitamin C</div>
+            <div class="nutrition-cell">17mg</div>
+            <div class="nutrition-cell">20%</div>
           </div>
-
-          <div class="nutrition-row vitamin">
-            <div class="nutrition-key">Vitamin C</div>
-            <div class="nutrition-val">17mg</div>
-            <div class="nutrition-dv">20%</div>
+          <div class="nutrition-row">
+            <div class="nutrition-cell">Vitamin B₁</div>
+            <div class="nutrition-cell">0.88mg</div>
+            <div class="nutrition-cell">70%</div>
           </div>
-
-          <div class="nutrition-row vitamin">
-            <div class="nutrition-key">Vitamin B₁ (Thiamine)</div>
-            <div class="nutrition-val">0.88mg</div>
-            <div class="nutrition-dv">70%</div>
+          <div class="nutrition-row">
+            <div class="nutrition-cell">Vitamin B₂</div>
+            <div class="nutrition-cell">0.86mg</div>
+            <div class="nutrition-cell">50%</div>
           </div>
-
-          <div class="nutrition-row vitamin">
-            <div class="nutrition-key">Vitamin B₂ (Riboflavin)</div>
-            <div class="nutrition-val">0.86mg</div>
-            <div class="nutrition-dv">50%</div>
+          <div class="nutrition-row">
+            <div class="nutrition-cell">Vitamin D</div>
+            <div class="nutrition-cell">0mcg</div>
+            <div class="nutrition-cell">0%</div>
           </div>
-
-          <div class="nutrition-row vitamin">
-            <div class="nutrition-key">Vitamin D</div>
-            <div class="nutrition-val">0mcg</div>
-            <div class="nutrition-dv">0%</div>
+          <div class="nutrition-row">
+            <div class="nutrition-cell">Calcium</div>
+            <div class="nutrition-cell">7mg</div>
+            <div class="nutrition-cell">6%</div>
           </div>
-
-          <div class="nutrition-row vitamin">
-            <div class="nutrition-key">Calcium</div>
-            <div class="nutrition-val">7mg</div>
-            <div class="nutrition-dv">6%</div>
-          </div>
-
-          <div class="nutrition-row vitamin">
-            <div class="nutrition-key">Iron</div>
-            <div class="nutrition-val">1mg</div>
-            <div class="nutrition-dv">6%</div>
-          </div>
-
-          <div class="nutrition-row vitamin">
-            <div class="nutrition-key">Potassium</div>
-            <div class="nutrition-val">67mg</div>
-            <div class="nutrition-dv">2%</div>
+          <div class="nutrition-row">
+            <div class="nutrition-cell">Iron</div>
+            <div class="nutrition-cell">1mg</div>
+            <div class="nutrition-cell">6%</div>
           </div>
         </div>
       </div>
 
-      <!-- INGREDIENTS -->
-      <div class="specs-section">
+      <!-- INGREDIENTS — 6 БЛОКІВ, 3 В РЯД -->
+      <div class="ingredients-section">
         <h2 class="section-title">Ingredients</h2>
         <p class="section-subtitle">What goes into every bar</p>
 
-        <div class="ingredients-grid">
+        <div class="ingredients-grid-6">
           <div class="ingredient-card">
             <div class="ingredient-icon">🌾</div>
             <h3>Wheat Flour</h3>
             <p>Primary grain base for sustained energy</p>
           </div>
           <div class="ingredient-card">
-            <div class="ingredient-icon">🫒</div>
+            <div class="ingredient-icon">🌴</div>
             <h3>Vegetable Fat</h3>
             <p>Palm oil for long-lasting satiety</p>
           </div>
@@ -216,7 +180,7 @@
             <p>Quick energy source for emergencies</p>
           </div>
           <div class="ingredient-card">
-            <div class="ingredient-icon">🌱</div>
+            <div class="ingredient-icon">🌿</div>
             <h3>Malt</h3>
             <p>Natural flavor and additional nutrients</p>
           </div>
@@ -233,31 +197,34 @@
         </div>
       </div>
 
-      <!-- ALLERGENS & INFO -->
-      <div class="specs-section">
+      <!-- ALLERGENS -->
+      <div class="allergen-section">
         <h2 class="section-title">Allergens & Info</h2>
         <p class="section-subtitle">Important information for consumers</p>
 
-        <div class="info-grid">
-          <div class="info-card warning">
-            <div class="info-icon">⚠️</div>
-            <h3>Contains</h3>
-            <p><strong>Wheat</strong></p>
-            <p>May contain traces of <strong>milk</strong> and <strong>soy</strong></p>
+        <div class="allergen-grid">
+          <div class="allergen-card">
+            <div class="allergen-icon">⚠️</div>
+            <h4>Contains</h4>
+            <p><strong>Wheat.</strong> May contain traces of <strong>milk</strong> and <strong>soy</strong>.</p>
           </div>
-          <div class="info-card good">
-            <div class="info-icon">✅</div>
-            <h3>Certifications</h3>
-            <p>✅ Halal Certified</p>
-            <p>✅ Vegetarian</p>
-            <p>✅ No meat or animal fat</p>
+          <div class="allergen-card">
+            <div class="allergen-icon">✅</div>
+            <h4>Certifications</h4>
+            <ul>
+              <li>✓ Halal Certified</li>
+              <li>✓ Vegetarian</li>
+              <li>✓ No meat or animal fat</li>
+            </ul>
           </div>
-          <div class="info-card storage">
-            <div class="info-icon">📅</div>
-            <h3>Storage</h3>
-            <p>5 years shelf life</p>
-            <p>Store in cool, dry place</p>
-            <p>No refrigeration required</p>
+          <div class="allergen-card">
+            <div class="allergen-icon">📦</div>
+            <h4>Storage</h4>
+            <ul>
+              <li>✓ 5 years shelf life</li>
+              <li>✓ Store in cool, dry place</li>
+              <li>✓ No refrigeration required</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -267,8 +234,8 @@
 
   <section class="cta">
     <div class="container">
-      <h2>Ready to Stock Up?</h2>
-      <p>5 years of peace of mind. Order today.</p>
+      <h2>Fuel for the Unknown</h2>
+      <p>5 years of reliable nutrition, ready when you need it most.</p>
       <div class="cta-buttons">
         <a href="contact.html" class="btn btn-primary btn-large">Order Now — $39.95</a>
       </div>
