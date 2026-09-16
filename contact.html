@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Now — Seven Oceans Emergency Food Ration</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="pages.css">
+</head>
+<body class="storm">
+
+  <div class="rain" id="rain"></div>
+  <div class="lightning" id="lightning"></div>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <span class="logo-ship">⛵</span>
+        <span class="logo-text">SEVEN OCEANS</span>
+      </a>
+      <button class="menu-toggle" id="menuToggle">☰</button>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="product.html">Product</a></li>
+        <li><a href="nutrition.html">Nutrition</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" class="btn-nav active">Order Now</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="page-hero-content">
+      <div class="hero-badge">📞 Order & Contact</div>
+      <h1 class="page-title">Ready to <span>Order</span>?</h1>
+      <p class="page-subtitle">Free shipping across the USA · 30-day returns</p>
+    </div>
+  </section>
+
+  <section class="page-content">
+    <div class="container">
+
+      <div class="order-hero">
+        <div class="order-product">
+          <img src="images/box-transparent.png" alt="Seven Oceans Emergency Food Ration">
+        </div>
+
+        <div class="order-summary">
+          <div class="hero-badge">In Stock</div>
+          <h2>Seven Oceans Emergency Food Ration</h2>
+          <div class="order-rating">
+            <span class="stars">⭐⭐⭐⭐⭐</span>
+            <span class="rating-text">4.2 · 128 reviews</span>
+          </div>
+          <p class="order-price">$39.95 <span>per box · 500g · 9 bars</span></p>
+
+          <ul class="order-features">
+            <li>✅ 5-year shelf life</li>
+            <li>✅ 2,430 kcal per box</li>
+            <li>✅ Waterproof packaging</li>
+            <li>✅ Halal & Vegetarian certified</li>
+            <li>✅ Made in Norway 🇳🇴</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="order-form-section">
+        <h2 class="section-title">Place Your Order</h2>
+        <p class="section-subtitle">Fill in the form below — we'll contact you within 24 hours</p>
+
+        <form id="orderForm" class="order-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Full Name *</label>
+              <input type="text" id="name" name="name" placeholder="John Smith" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number *</label>
+              <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email Address *</label>
+              <input type="email" id="email" name="email" placeholder="john@example.com" required>
+            </div>
+            <div class="form-group">
+              <label for="quantity">Quantity *</label>
+              <input type="number" id="quantity" name="quantity" value="1" min="1" max="100" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="address">Shipping Address *</label>
+            <textarea id="address" name="address" rows="3" placeholder="123 Main St, City, State, ZIP Code" required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="notes">Additional Notes (optional)</label>
+            <textarea id="notes" name="notes" rows="3" placeholder="Any special instructions for delivery..."></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" id="submitBtn" class="btn btn-primary btn-large">
+              ⚓ Place Order — $39.95
+            </button>
+          </div>
+
+          <p class="form-note">✓ Free shipping · ✓ Ships from USA · ✓ 30-day returns</p>
+          <p id="formMessage" class="form-message"></p>
+        </form>
+      </div>
+
+      <div class="contact-section">
+        <h2 class="section-title">Get in Touch</h2>
+        <p class="section-subtitle">We're here to help — reach out anytime</p>
+
+        <div class="contact-grid">
+          <div class="contact-card">
+            <div class="contact-icon">📧</div>
+            <h3>Email</h3>
+            <p>info@sevenoceansemergency.com</p>
+            <span class="contact-note">We reply within 24 hours</span>
+          </div>
+          <div class="contact-card">
+            <div class="contact-icon">📱</div>
+            <h3>Phone</h3>
+            <p>+1 (555) 123-4567</p>
+            <span class="contact-note">Mon-Fri, 9am-6pm EST</span>
+          </div>
+          <div class="contact-card">
+            <div class="contact-icon">💬</div>
+            <h3>Live Chat</h3>
+            <p>Available on Amazon</p>
+            <span class="contact-note">Fastest response</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <h2>Ready When You Are</h2>
+      <p>5 years of peace of mind — shipped free across the USA.</p>
+      <div class="cta-buttons">
+        <a href="https://www.amazon.com" target="_blank" class="btn btn-primary btn-large">🛒 Buy on Amazon — $39.95</a>
+      </div>
+      <p class="cta-note">✓ Free shipping · ✓ Ships from USA · ✓ 30-day returns</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>⛵ SEVEN OCEANS</h4>
+          <p>Standard Emergency Food Ration. Trusted worldwide since 1970s.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Shop</h4>
+          <ul>
+            <li><a href="product.html">Product</a></li>
+            <li><a href="nutrition.html">Nutrition</a></li>
+            <li><a href="contact.html">Order</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul>
+            <li>📧 info@sevenoceansemergency.com</li>
+            <li>📱 +1 (555) 123-4567</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2024 Seven Oceans. All rights reserved.</p>
+        <p>Made with ⚓ in USA</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // ===== ORDER FORM → GOOGLE SHEETS =====
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwGkCaCe04-PAjFrV62PZ4nt6di6bbIQem__3EWXNIf0MvlaPlSIXk3xbsASE--cBXYqg/exec';
+    const form = document.getElementById('orderForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const formMessage = document.getElementById('formMessage');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.textContent = '⏳ Sending...';
+      formMessage.textContent = '';
+      formMessage.className = 'form-message';
+
+      fetch(scriptURL, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: new FormData(form)
+      })
+      .then(() => {
+        formMessage.textContent = '✅ Order placed successfully! We will contact you within 24 hours.';
+        formMessage.className = 'form-message success';
+        form.reset();
+      })
+      .catch(error => {
+        console.error('Error!', error.message);
+        formMessage.textContent = '❌ Error submitting order. Please try again or contact us directly.';
+        formMessage.className = 'form-message error';
+      })
+      .finally(() => {
+        submitBtn.disabled = false;
+        submitBtn.textContent = '⚓ Place Order — $39.95';
+      });
+    });
+  </script>
+</body>
+</html>
