@@ -2,7 +2,7 @@
 /* ===== STYLES FOR INNER PAGES ===== */
 /* ============================================= */
 
-/* ===== PAGE HERO — SMOOTH INTO CONTENT ===== */
+/* ===== PAGE HERO → CONTENT: UNIFIED GRADIENT ===== */
 .page-hero {
   position: relative;
   min-height: 50vh;
@@ -10,12 +10,12 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 200px 20px 120px;
+  padding: 200px 20px 100px;
   overflow: hidden;
   background: linear-gradient(180deg, 
     #00111f 0%, 
-    #0a1929 60%,
-    #0f2438 100%
+    #0a1929 70%,
+    #0d2138 100%
   );
   z-index: 2;
 }
@@ -88,14 +88,14 @@
   text-shadow: 0 2px 20px rgba(0, 0, 0, 0.9);
 }
 
-/* ===== PAGE CONTENT — SMOOTH TRANSITION FROM HERO ===== */
+/* ===== PAGE CONTENT — CONTINUES FROM HERO GRADIENT ===== */
 .page-content {
-  padding: 60px 0 140px;
+  padding: 80px 0 140px;
   background: linear-gradient(180deg,
-    #0f2438 0%,
-    #0a1929 15%,
-    #001f3f 40%,
-    #00111f 70%,
+    #0d2138 0%,
+    #0a1a2e 25%,
+    #0a1929 50%,
+    #001f3f 75%,
     #00111f 100%
   );
   position: relative;
@@ -103,19 +103,20 @@
   margin-top: -1px;
 }
 
-/* Decorative transition from hero */
+/* Soft glow at top */
 .page-content::before {
   content: '';
   position: absolute;
   top: 0;
-  left: 0;
-  right: 0;
-  height: 200px;
-  background: radial-gradient(ellipse at 50% 0%, rgba(0, 180, 216, 0.08) 0%, transparent 70%);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 300px;
+  background: radial-gradient(ellipse at 50% 0%, rgba(0, 180, 216, 0.06) 0%, transparent 70%);
   pointer-events: none;
 }
 
-/* ===== SECTION TITLES — LIGHT ON DARK ===== */
+/* ===== SECTION TITLES ===== */
 .page-content .section-title {
   font-family: 'Playfair Display', serif;
   font-size: 48px;
@@ -143,7 +144,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 60px;
   align-items: center;
-  margin-bottom: 120px;
+  margin-bottom: 140px;
 }
 
 .product-detail-image {
@@ -294,7 +295,7 @@
 
 /* ===== SPECS TABLE ===== */
 .specs-section {
-  margin-bottom: 120px;
+  margin-bottom: 140px;
 }
 
 .specs-table {
@@ -347,7 +348,7 @@
 
 /* ===== GALLERY SECTION ===== */
 .gallery-section {
-  margin-bottom: 120px;
+  margin-bottom: 140px;
 }
 
 /* ============================================= */
@@ -434,7 +435,7 @@
   font-weight: 600;
 }
 
-/* ===== STATS SECTION — BRIGHT CARDS ===== */
+/* ===== STATS SECTION ===== */
 .stats-section {
   margin-bottom: 140px;
   position: relative;
@@ -706,26 +707,28 @@
 }
 
 /* ============================================= */
-/* ===== SMOOTH TRANSITION TO CTA ===== */
+/* ===== CTA — SMOOTH FROM PAGE CONTENT ===== */
 /* ============================================= */
 
-/* Add smooth fade between page-content and cta */
 .page-content + .cta {
   position: relative;
+  background: linear-gradient(180deg,
+    #00111f 0%,
+    #001f3f 30%,
+    #00111f 70%,
+    #000a12 100%
+  );
 }
 
 .page-content + .cta::before {
   content: '';
   position: absolute;
-  top: -100px;
-  left: 0;
-  right: 0;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
   height: 200px;
-  background: linear-gradient(180deg,
-    transparent 0%,
-    rgba(0, 17, 31, 0.5) 50%,
-    rgba(0, 17, 31, 0.9) 100%
-  );
+  background: radial-gradient(ellipse at 50% 0%, rgba(0, 180, 216, 0.08) 0%, transparent 70%);
   pointer-events: none;
   z-index: 1;
 }
