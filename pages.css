@@ -1,8 +1,8 @@
 /* ============================================= */
-/* ===== STYLES FOR INNER PAGES ===== */
+/* ===== PAGES.CSS — INNER PAGES ===== */
 /* ============================================= */
 
-/* ===== PAGE HERO — плавний перехід ===== */
+/* ===== PAGE HERO ===== */
 .page-hero {
   position: relative;
   min-height: 55vh;
@@ -10,7 +10,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 140px 20px 100px;
+  padding: 130px 20px 90px;
   overflow: hidden;
   background: linear-gradient(135deg, #00111f 0%, #0a1929 50%, #001f3f 100%);
   z-index: 2;
@@ -53,11 +53,11 @@
 
 .page-title {
   font-family: 'Playfair Display', serif;
-  font-size: 68px;
+  font-size: 64px;
   font-weight: 900;
   line-height: 1.1;
   letter-spacing: -2px;
-  margin: 20px 0;
+  margin: 18px 0;
   color: var(--white);
   text-shadow: 0 0 60px rgba(0, 180, 216, 0.5), 0 6px 30px rgba(0, 0, 0, 0.9);
 }
@@ -70,17 +70,15 @@
 }
 
 .page-subtitle {
-  font-size: 19px;
+  font-size: 18px;
   color: var(--blue-light);
   font-style: italic;
   font-family: 'Playfair Display', serif;
-  margin-top: 14px;
+  margin-top: 12px;
   text-shadow: 0 2px 20px rgba(0, 0, 0, 0.9);
 }
 
-/* ============================================= */
-/* ===== PAGE CONTENT — ПЛАВНИЙ ПЕРЕХІД ===== */
-/* ============================================= */
+/* ===== PAGE CONTENT + SMOOTH TRANSITION ===== */
 .page-content {
   position: relative;
   padding: 100px 0 140px;
@@ -88,31 +86,16 @@
   z-index: 2;
 }
 
-/* Плавний fade з hero до контенту */
 .page-content::before {
   content: '';
   position: absolute;
-  top: -120px;
+  top: -100px;
   left: 0;
   right: 0;
-  height: 240px;
+  height: 200px;
   background: linear-gradient(180deg, transparent 0%, #0a1929 100%);
   pointer-events: none;
   z-index: 1;
-}
-
-/* М'який glow знизу */
-.page-content::after {
-  content: '';
-  position: absolute;
-  bottom: -100px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 800px;
-  height: 400px;
-  background: radial-gradient(ellipse, rgba(0, 180, 216, 0.08) 0%, transparent 70%);
-  filter: blur(60px);
-  pointer-events: none;
 }
 
 .page-content .container {
@@ -123,7 +106,7 @@
 /* ===== SECTION TITLES ===== */
 .page-content .section-title {
   font-family: 'Playfair Display', serif;
-  font-size: 46px;
+  font-size: 44px;
   text-align: center;
   color: var(--white);
   margin-bottom: 14px;
@@ -136,7 +119,7 @@
   text-align: center;
   font-size: 16px;
   color: rgba(255, 255, 255, 0.55);
-  margin-bottom: 55px;
+  margin-bottom: 50px;
   font-style: italic;
 }
 
@@ -152,13 +135,11 @@
   opacity: 0.9;
 }
 
-/* ============================================= */
 /* ===== INTRO BLOCK ===== */
-/* ============================================= */
 .intro-block {
   max-width: 900px;
-  margin: 0 auto 80px;
-  padding: 40px 48px;
+  margin: 0 auto 70px;
+  padding: 36px 44px;
   text-align: center;
   background: linear-gradient(135deg,
     rgba(0, 180, 216, 0.1) 0%,
@@ -166,12 +147,9 @@
     rgba(0, 180, 216, 0.06) 100%
   );
   backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(0, 180, 216, 0.35);
   border-radius: 24px;
-  box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.5),
-    0 0 100px rgba(0, 180, 216, 0.15);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 100px rgba(0, 180, 216, 0.15);
   position: relative;
   overflow: hidden;
 }
@@ -204,35 +182,34 @@
 .intro-block p {
   position: relative;
   z-index: 1;
-  font-size: 18px;
+  font-size: 17px;
   color: rgba(255, 255, 255, 0.9);
   line-height: 1.8;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .intro-block p:last-child { margin-bottom: 0; }
 .intro-block p strong { color: var(--blue-light); font-weight: 700; }
 
 /* ============================================= */
-/* ===== NUTRITION BLOCKS — 4 в рядок ===== */
+/* ===== NUTRITION BLOCKS — 4 В РЯДОК ===== */
 /* ============================================= */
 .nutrition-blocks {
   max-width: 1200px;
-  margin: 0 auto 100px;
+  margin: 0 auto 90px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
 }
 
 .nutrition-block {
-  padding: 28px 24px;
+  padding: 26px 22px;
   background: linear-gradient(135deg,
     rgba(0, 180, 216, 0.08) 0%,
     rgba(0, 17, 31, 0.75) 50%,
     rgba(0, 180, 216, 0.05) 100%
   );
   backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
   border-radius: 20px;
   border: 1px solid rgba(0, 180, 216, 0.25);
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
@@ -268,7 +245,7 @@
 
 .nutrition-block .nutrient-value {
   font-family: 'Playfair Display', serif;
-  font-size: 34px;
+  font-size: 32px;
   font-weight: 900;
   color: var(--blue-light);
   line-height: 1;
@@ -284,25 +261,24 @@
 }
 
 /* ============================================= */
-/* ===== INGREDIENT CARDS — 3 в рядок ===== */
+/* ===== INGREDIENT CARDS — 3 В РЯДОК ===== */
 /* ============================================= */
 .ingredients-grid {
   max-width: 1200px;
-  margin: 0 auto 100px;
+  margin: 0 auto 90px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  gap: 22px;
 }
 
 .ingredient-card {
-  padding: 32px 28px;
+  padding: 30px 26px;
   background: linear-gradient(135deg,
     rgba(0, 180, 216, 0.06) 0%,
     rgba(0, 17, 31, 0.7) 50%,
     rgba(0, 180, 216, 0.04) 100%
   );
   backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
   border-radius: 20px;
   border: 1px solid rgba(0, 180, 216, 0.2);
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
@@ -327,8 +303,8 @@
 }
 
 .ingredient-icon {
-  font-size: 40px;
-  margin-bottom: 14px;
+  font-size: 38px;
+  margin-bottom: 12px;
   display: block;
   filter: drop-shadow(0 8px 16px rgba(0, 180, 216, 0.4));
   position: relative;
@@ -337,7 +313,7 @@
 
 .ingredient-card h3 {
   font-family: 'Playfair Display', serif;
-  font-size: 22px;
+  font-size: 20px;
   color: var(--white);
   margin-bottom: 10px;
   font-weight: 700;
@@ -346,7 +322,7 @@
 }
 
 .ingredient-card p {
-  font-size: 15px;
+  font-size: 14px;
   color: rgba(255, 255, 255, 0.7);
   line-height: 1.7;
   position: relative;
@@ -354,7 +330,7 @@
 }
 
 /* ============================================= */
-/* ===== INFO CARDS — 4 в рядок ===== */
+/* ===== INFO CARDS — 4 В РЯДОК ===== */
 /* ============================================= */
 .info-grid {
   max-width: 1200px;
@@ -365,14 +341,13 @@
 }
 
 .info-card {
-  padding: 32px 26px;
+  padding: 30px 24px;
   background: linear-gradient(135deg,
     rgba(0, 180, 216, 0.06) 0%,
     rgba(0, 17, 31, 0.75) 50%,
     rgba(0, 180, 216, 0.04) 100%
   );
   backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
   border-radius: 22px;
   border: 1px solid rgba(0, 180, 216, 0.22);
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
@@ -401,15 +376,15 @@
 }
 
 .info-card-icon {
-  font-size: 36px;
-  margin-bottom: 14px;
+  font-size: 34px;
+  margin-bottom: 12px;
   display: block;
   filter: drop-shadow(0 8px 16px rgba(0, 180, 216, 0.4));
 }
 
 .info-card h3 {
   font-family: 'Playfair Display', serif;
-  font-size: 20px;
+  font-size: 19px;
   color: var(--white);
   margin-bottom: 12px;
   font-weight: 700;
@@ -455,7 +430,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 60px;
   align-items: center;
-  margin-bottom: 120px;
+  margin-bottom: 110px;
 }
 
 .product-detail-image {
@@ -572,7 +547,7 @@
 /* ============================================= */
 /* ===== SPECS TABLE ===== */
 /* ============================================= */
-.specs-section { margin-bottom: 100px; }
+.specs-section { margin-bottom: 90px; }
 
 .specs-table {
   max-width: 800px;
@@ -593,7 +568,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 18px 0;
+  padding: 16px 0;
   border-bottom: 1px solid rgba(0, 180, 216, 0.12);
   transition: all 0.25s ease;
 }
@@ -624,7 +599,7 @@
   text-align: right;
 }
 
-.gallery-section { margin-bottom: 100px; }
+.gallery-section { margin-bottom: 90px; }
 
 /* ============================================= */
 /* ===== ABOUT PAGE ===== */
@@ -634,7 +609,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 60px;
   align-items: center;
-  margin-bottom: 120px;
+  margin-bottom: 110px;
 }
 
 .about-image {
@@ -700,7 +675,7 @@
 
 .about-text p strong { color: var(--blue-light); font-weight: 700; }
 
-.stats-section { margin-bottom: 120px; }
+.stats-section { margin-bottom: 110px; }
 
 .stats-grid {
   display: grid;
@@ -753,7 +728,7 @@
   line-height: 1.4;
 }
 
-.values-section { margin-bottom: 120px; }
+.values-section { margin-bottom: 110px; }
 
 .values-grid {
   display: grid;
@@ -879,17 +854,17 @@
     grid-template-columns: 1fr;
     gap: 40px;
   }
-  .page-title { font-size: 48px; }
+  .page-title { font-size: 46px; }
   .about-text h2,
   .product-detail-info h2 { font-size: 32px; }
   .product-price { font-size: 36px; }
-  .page-content .section-title { font-size: 34px; }
+  .page-content .section-title { font-size: 32px; }
 }
 
 @media (max-width: 640px) {
-  .page-hero { padding: 120px 20px 80px; min-height: 45vh; }
-  .page-title { font-size: 36px; }
-  .page-subtitle { font-size: 16px; }
+  .page-hero { padding: 110px 20px 70px; min-height: 45vh; }
+  .page-title { font-size: 34px; }
+  .page-subtitle { font-size: 15px; }
 
   .nutrition-blocks,
   .info-grid,
@@ -908,6 +883,6 @@
   .specs-table { padding: 16px 20px; }
   .spec-row:hover { margin: 0 -20px; padding-left: 20px; padding-right: 20px; }
   .page-content { padding: 60px 0 100px; }
-  .intro-block { padding: 32px 24px; }
+  .intro-block { padding: 28px 22px; }
   .intro-block p { font-size: 15px; }
 }
