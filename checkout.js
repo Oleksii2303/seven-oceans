@@ -1,4 +1,15 @@
-// ===== CHECKOUT — Quantity + Total + Submit =====
+// ===== CHECKOUT — Quantity + Total + Submit with EmailJS =====
+
+// ===== EMAILJS CONFIG =====
+const EMAILJS_PUBLIC_KEY = 'E7pjNV8SQNHAO65U6';
+const EMAILJS_SERVICE_ID = 'service_k41npu2';
+const EMAILJS_TEMPLATE_ID = 'template_fsvvhpa';
+
+// Init EmailJS
+if (typeof emailjs !== 'undefined') {
+  emailjs.init(EMAILJS_PUBLIC_KEY);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
 
   const PRICE_PER_UNIT = 39.95;
@@ -7,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const subtotalEl = document.getElementById('subtotal');
   const totalEl = document.getElementById('total');
   const btnTotalEl = document.getElementById('btnTotal');
+  const placeOrderBtn = document.querySelector('.place-order-btn');
 
   // ===== QUANTITY BUTTONS =====
   document.querySelectorAll('.qty-btn').forEach(btn => {
@@ -47,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ===== FORM SUBMIT =====
   const form = document.getElementById('checkoutForm');
   if (form) {
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
       const firstName = document.getElementById('firstName').value.trim();
@@ -55,10 +67,14 @@ document.addEventListener('DOMContentLoaded', () => {
       const email = document.getElementById('email').value.trim();
       const phone = document.getElementById('phone').value.trim();
       const address = document.getElementById('address').value.trim();
+      const address2 = document.getElementById('address2').value.trim();
       const city = document.getElementById('city').value.trim();
       const state = document.getElementById('state').value;
       const zip = document.getElementById('zip').value.trim();
+      const country = document.getElementById('country').value;
+      const notes = document.getElementById('notes').value.trim();
       const qty = parseInt(qtyInput.value) || 1;
+      const total = '$' + (qty * PRICE_PER_UNIT).toFixed(2);
 
       // Validation
       if (!firstName || !lastName || !email || !phone || !address || !city || !state || !zip) {
@@ -72,13 +88,56 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // Show success
-      showSuccess({
-        name: firstName + ' ' + lastName,
-        email: email,
-        qty: qty,
-        total: '$' + (qty * PRICE_PER_UNIT).toFixed(2)
-      });
+      // Disable button + show loading
+      const originalBtnText = placeOrderBtn.innerHTML;
+      placeOrderBtn.disabled = true;
+      placeOrderBtn.style.opacity = '0.7';
+      placeOrderBtn.innerHTML = '⏳ Sending order...';
+
+      // Prepare EmailJS data
+      const templateParams = {
+        customer_name: firstName + ' ' + lastName,
+        customer_email: email,
+        customer_phone: phone,
+        address: address,
+        address2: address2 || '—',
+        city: city,
+        state: state,
+        zip: zip,
+        country: country,
+        quantity: qty,
+        total: total,
+        notes: notes || 'No notes'
+      };
+
+      try {
+        // Send email via EmailJS
+        await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
+        
+        console.log('✅ Order sent successfully');
+
+        // Show success modal
+        showSuccess({
+          name: firstName + ' ' + lastName,
+          email: email,
+          qty: qty,
+          total: total
+        });
+
+        // Reset form
+        form.reset();
+        qtyInput.value = 1;
+        updateTotals();
+
+      } catch (error) {
+        console.error('❌ EmailJS error:', error);
+        alert('❌ Failed to send order. Please try again or contact us directly at info@sevenoceansemergency.com');
+      } finally {
+        // Restore button
+        placeOrderBtn.disabled = false;
+        placeOrderBtn.style.opacity = '1';
+        placeOrderBtn.innerHTML = originalBtnText;
+      }
     });
   }
 
@@ -94,14 +153,13 @@ document.addEventListener('DOMContentLoaded', () => {
         <p>Your order of <strong>${order.qty} box${order.qty > 1 ? 'es' : ''}</strong> — Total: <strong>${order.total}</strong></p>
         <p class="success-email">📧 Confirmation sent to ${order.email}</p>
         <div class="success-info">
-          <p>🔒 This is a demo. In production, this would connect to a real payment processor.</p>
+          <p>We've received your order and will contact you shortly at <strong>${order.email}</strong> to confirm payment and shipping details.</p>
         </div>
         <a href="index.html" class="btn">Back to Home</a>
       </div>
     `;
     document.body.appendChild(overlay);
 
-    // Close on background click
     overlay.addEventListener('click', (e) => {
       if (e.target === overlay) overlay.remove();
     });
