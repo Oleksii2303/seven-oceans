@@ -1,16 +1,16 @@
 /* ============================================= */
-/* ===== STYLES FOR INNER PAGES — MODERN DARK ===== */
+/* ===== STYLES FOR INNER PAGES ===== */
 /* ============================================= */
 
-/* ===== PAGE HERO ===== */
+/* ===== PAGE HERO — плавний перехід ===== */
 .page-hero {
   position: relative;
-  min-height: 60vh;
+  min-height: 55vh;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 200px 20px 120px;
+  padding: 140px 20px 100px;
   overflow: hidden;
   background: linear-gradient(135deg, #00111f 0%, #0a1929 50%, #001f3f 100%);
   z-index: 2;
@@ -53,11 +53,11 @@
 
 .page-title {
   font-family: 'Playfair Display', serif;
-  font-size: 72px;
+  font-size: 68px;
   font-weight: 900;
   line-height: 1.1;
   letter-spacing: -2px;
-  margin: 24px 0;
+  margin: 20px 0;
   color: var(--white);
   text-shadow: 0 0 60px rgba(0, 180, 216, 0.5), 0 6px 30px rgba(0, 0, 0, 0.9);
 }
@@ -70,40 +70,49 @@
 }
 
 .page-subtitle {
-  font-size: 20px;
+  font-size: 19px;
   color: var(--blue-light);
   font-style: italic;
   font-family: 'Playfair Display', serif;
-  margin-top: 16px;
+  margin-top: 14px;
   text-shadow: 0 2px 20px rgba(0, 0, 0, 0.9);
 }
 
 /* ============================================= */
-/* ===== PAGE CONTENT — SMOOTH DARK BG ===== */
+/* ===== PAGE CONTENT — ПЛАВНИЙ ПЕРЕХІД ===== */
 /* ============================================= */
 .page-content {
   position: relative;
-  padding: 80px 0 140px;
-  background: linear-gradient(180deg,
-    #00111f 0%,
-    #0a1929 5%,
-    #0a1929 95%,
-    #00111f 100%
-  );
+  padding: 100px 0 140px;
+  background: #0a1929;
   z-index: 2;
 }
 
-/* Smooth transition from hero */
+/* Плавний fade з hero до контенту */
 .page-content::before {
   content: '';
   position: absolute;
-  top: -100px;
+  top: -120px;
   left: 0;
   right: 0;
-  height: 200px;
+  height: 240px;
   background: linear-gradient(180deg, transparent 0%, #0a1929 100%);
   pointer-events: none;
   z-index: 1;
+}
+
+/* М'який glow знизу */
+.page-content::after {
+  content: '';
+  position: absolute;
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(0, 180, 216, 0.08) 0%, transparent 70%);
+  filter: blur(60px);
+  pointer-events: none;
 }
 
 .page-content .container {
@@ -114,104 +123,38 @@
 /* ===== SECTION TITLES ===== */
 .page-content .section-title {
   font-family: 'Playfair Display', serif;
-  font-size: 48px;
+  font-size: 46px;
   text-align: center;
   color: var(--white);
-  margin-bottom: 16px;
+  margin-bottom: 14px;
   font-weight: 700;
   letter-spacing: -1px;
-  text-shadow: 0 0 40px rgba(0, 180, 216, 0.4);
+  text-shadow: 0 0 40px rgba(0, 180, 216, 0.35);
 }
 
 .page-content .section-subtitle {
   text-align: center;
-  font-size: 17px;
+  font-size: 16px;
   color: rgba(255, 255, 255, 0.55);
-  margin-bottom: 60px;
+  margin-bottom: 55px;
   font-style: italic;
 }
 
 .section-eyebrow {
   display: block;
   text-align: center;
-  font-size: 13px;
+  font-size: 12px;
   letter-spacing: 3px;
   text-transform: uppercase;
   color: var(--blue-light);
   font-weight: 700;
-  margin-bottom: 14px;
-  opacity: 0.85;
+  margin-bottom: 12px;
+  opacity: 0.9;
 }
 
 /* ============================================= */
-/* ===== GLASS BLOCK BASE ===== */
+/* ===== INTRO BLOCK ===== */
 /* ============================================= */
-.glass-block {
-  position: relative;
-  background: linear-gradient(135deg,
-    rgba(0, 180, 216, 0.08) 0%,
-    rgba(0, 17, 31, 0.75) 50%,
-    rgba(0, 180, 216, 0.05) 100%
-  );
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(0, 180, 216, 0.25);
-  border-radius: 24px;
-  box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.5),
-    inset 0 1px 0 rgba(255, 255, 255, 0.06);
-  transition: all 0.4s ease;
-}
-
-.glass-block:hover {
-  border-color: rgba(0, 180, 216, 0.5);
-  box-shadow:
-    0 30px 80px rgba(0, 0, 0, 0.6),
-    0 0 80px rgba(0, 180, 216, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.12);
-}
-
-/* ============================================= */
-/* ===== INFO BLOCK (for paragraphs of text) ===== */
-/* ============================================= */
-.info-block {
-  position: relative;
-  max-width: 900px;
-  margin: 0 auto 30px;
-  padding: 36px 40px;
-  background: linear-gradient(135deg,
-    rgba(0, 180, 216, 0.06) 0%,
-    rgba(0, 17, 31, 0.7) 50%,
-    rgba(0, 180, 216, 0.04) 100%
-  );
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(0, 180, 216, 0.2);
-  border-radius: 24px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-  transition: all 0.4s ease;
-}
-
-.info-block:hover {
-  border-color: rgba(0, 180, 216, 0.45);
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5), 0 0 80px rgba(0, 180, 216, 0.15);
-  transform: translateY(-4px);
-}
-
-.info-block p {
-  font-size: 17px;
-  color: rgba(255, 255, 255, 0.85);
-  line-height: 1.85;
-  margin-bottom: 16px;
-}
-
-.info-block p:last-child { margin-bottom: 0; }
-
-.info-block p strong {
-  color: var(--blue-light);
-  font-weight: 700;
-}
-
-/* ===== INTRO BLOCK (top of page) ===== */
 .intro-block {
   max-width: 900px;
   margin: 0 auto 80px;
@@ -219,11 +162,12 @@
   text-align: center;
   background: linear-gradient(135deg,
     rgba(0, 180, 216, 0.1) 0%,
-    rgba(0, 17, 31, 0.8) 50%,
+    rgba(0, 17, 31, 0.85) 50%,
     rgba(0, 180, 216, 0.06) 100%
   );
   backdrop-filter: blur(20px);
-  border: 1px solid rgba(0, 180, 216, 0.3);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 180, 216, 0.35);
   border-radius: 24px;
   box-shadow:
     0 20px 60px rgba(0, 0, 0, 0.5),
@@ -239,10 +183,10 @@
   border-radius: 24px;
   padding: 2px;
   background: linear-gradient(135deg,
-    rgba(0, 180, 216, 0.8),
-    rgba(144, 224, 239, 0.15),
-    rgba(244, 169, 0, 0.5),
-    rgba(0, 180, 216, 0.8)
+    rgba(0, 180, 216, 0.9),
+    rgba(144, 224, 239, 0.2),
+    rgba(244, 169, 0, 0.6),
+    rgba(0, 180, 216, 0.9)
   );
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
@@ -267,34 +211,30 @@
 }
 
 .intro-block p:last-child { margin-bottom: 0; }
-
-.intro-block p strong {
-  color: var(--blue-light);
-  font-weight: 700;
-}
+.intro-block p strong { color: var(--blue-light); font-weight: 700; }
 
 /* ============================================= */
-/* ===== NUTRIENT GRID (2-3 columns blocks) ===== */
-/* ===== NUTRITION FACTS ROWS ===== */
+/* ===== NUTRITION BLOCKS — 4 в рядок ===== */
 /* ============================================= */
 .nutrition-blocks {
-  max-width: 1000px;
-  margin: 0 auto 60px;
+  max-width: 1200px;
+  margin: 0 auto 100px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
 }
 
 .nutrition-block {
-  padding: 28px 32px;
+  padding: 28px 24px;
   background: linear-gradient(135deg,
-    rgba(0, 180, 216, 0.06) 0%,
-    rgba(0, 17, 31, 0.7) 50%,
-    rgba(0, 180, 216, 0.04) 100%
+    rgba(0, 180, 216, 0.08) 0%,
+    rgba(0, 17, 31, 0.75) 50%,
+    rgba(0, 180, 216, 0.05) 100%
   );
   backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-radius: 20px;
-  border: 1px solid rgba(0, 180, 216, 0.2);
+  border: 1px solid rgba(0, 180, 216, 0.25);
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
   transition: all 0.35s ease;
   position: relative;
@@ -305,7 +245,7 @@
   content: '';
   position: absolute;
   top: 0; left: 0;
-  width: 4px;
+  width: 3px;
   height: 100%;
   background: linear-gradient(180deg, var(--blue), var(--blue-light));
   box-shadow: 0 0 20px rgba(0, 180, 216, 0.6);
@@ -313,12 +253,12 @@
 
 .nutrition-block:hover {
   transform: translateY(-6px);
-  border-color: rgba(0, 180, 216, 0.5);
+  border-color: rgba(0, 180, 216, 0.55);
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5), 0 0 60px rgba(0, 180, 216, 0.25);
 }
 
 .nutrition-block .nutrient-name {
-  font-size: 13px;
+  font-size: 12px;
   color: rgba(255, 255, 255, 0.5);
   text-transform: uppercase;
   letter-spacing: 1.5px;
@@ -328,7 +268,7 @@
 
 .nutrition-block .nutrient-value {
   font-family: 'Playfair Display', serif;
-  font-size: 36px;
+  font-size: 34px;
   font-weight: 900;
   color: var(--blue-light);
   line-height: 1;
@@ -338,19 +278,19 @@
 }
 
 .nutrition-block .nutrient-unit {
-  font-size: 14px;
+  font-size: 13px;
   color: rgba(255, 255, 255, 0.5);
   font-weight: 500;
 }
 
 /* ============================================= */
-/* ===== INGREDIENT CARDS ===== */
+/* ===== INGREDIENT CARDS — 3 в рядок ===== */
 /* ============================================= */
 .ingredients-grid {
-  max-width: 1100px;
-  margin: 0 auto;
+  max-width: 1200px;
+  margin: 0 auto 100px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
 }
 
@@ -362,6 +302,7 @@
     rgba(0, 180, 216, 0.04) 100%
   );
   backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-radius: 20px;
   border: 1px solid rgba(0, 180, 216, 0.2);
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
@@ -386,8 +327,8 @@
 }
 
 .ingredient-icon {
-  font-size: 42px;
-  margin-bottom: 16px;
+  font-size: 40px;
+  margin-bottom: 14px;
   display: block;
   filter: drop-shadow(0 8px 16px rgba(0, 180, 216, 0.4));
   position: relative;
@@ -413,24 +354,25 @@
 }
 
 /* ============================================= */
-/* ===== ALLERGEN / INFO CARDS ===== */
+/* ===== INFO CARDS — 4 в рядок ===== */
 /* ============================================= */
 .info-grid {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
 }
 
 .info-card {
-  padding: 36px 30px;
+  padding: 32px 26px;
   background: linear-gradient(135deg,
     rgba(0, 180, 216, 0.06) 0%,
     rgba(0, 17, 31, 0.75) 50%,
     rgba(0, 180, 216, 0.04) 100%
   );
   backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-radius: 22px;
   border: 1px solid rgba(0, 180, 216, 0.22);
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
@@ -459,55 +401,55 @@
 }
 
 .info-card-icon {
-  font-size: 40px;
-  margin-bottom: 16px;
+  font-size: 36px;
+  margin-bottom: 14px;
   display: block;
   filter: drop-shadow(0 8px 16px rgba(0, 180, 216, 0.4));
 }
 
 .info-card h3 {
   font-family: 'Playfair Display', serif;
-  font-size: 22px;
+  font-size: 20px;
   color: var(--white);
-  margin-bottom: 14px;
+  margin-bottom: 12px;
   font-weight: 700;
 }
 
 .info-card p {
-  font-size: 15px;
+  font-size: 14px;
   color: rgba(255, 255, 255, 0.75);
-  line-height: 1.75;
-  margin-bottom: 10px;
+  line-height: 1.7;
+  margin-bottom: 8px;
 }
 
 .info-card p:last-child { margin-bottom: 0; }
+.info-card p strong { color: var(--blue-light); font-weight: 700; }
 
 .info-card ul {
   list-style: none;
   padding: 0;
-  margin: 12px 0 0;
+  margin: 8px 0 0;
 }
 
 .info-card ul li {
-  padding: 8px 0;
+  padding: 6px 0;
   color: rgba(255, 255, 255, 0.8);
-  font-size: 15px;
+  font-size: 14px;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
 .info-card ul li::before {
   content: '✓';
   color: var(--blue-light);
   font-weight: 900;
-  font-size: 16px;
+  font-size: 15px;
 }
 
 /* ============================================= */
 /* ===== PRODUCT PAGE ===== */
 /* ============================================= */
-
 .product-detail-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -525,9 +467,7 @@
   background: linear-gradient(135deg, rgba(0, 180, 216, 0.08) 0%, rgba(0, 17, 31, 0.7) 50%, rgba(0, 180, 216, 0.05) 100%);
   border-radius: 32px;
   backdrop-filter: blur(20px);
-  box-shadow:
-    0 30px 80px rgba(0, 0, 0, 0.5),
-    0 0 120px rgba(0, 180, 216, 0.2);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5), 0 0 120px rgba(0, 180, 216, 0.2);
   overflow: hidden;
 }
 
@@ -632,7 +572,7 @@
 /* ============================================= */
 /* ===== SPECS TABLE ===== */
 /* ============================================= */
-.specs-section { margin-bottom: 120px; }
+.specs-section { margin-bottom: 100px; }
 
 .specs-table {
   max-width: 800px;
@@ -684,12 +624,11 @@
   text-align: right;
 }
 
-.gallery-section { margin-bottom: 120px; }
+.gallery-section { margin-bottom: 100px; }
 
 /* ============================================= */
 /* ===== ABOUT PAGE ===== */
 /* ============================================= */
-
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -707,9 +646,7 @@
   background: linear-gradient(135deg, rgba(0, 180, 216, 0.08) 0%, rgba(0, 17, 31, 0.7) 50%, rgba(0, 180, 216, 0.05) 100%);
   border-radius: 32px;
   backdrop-filter: blur(20px);
-  box-shadow:
-    0 30px 80px rgba(0, 0, 0, 0.5),
-    0 0 120px rgba(0, 180, 216, 0.2);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5), 0 0 120px rgba(0, 180, 216, 0.2);
   overflow: hidden;
 }
 
@@ -761,23 +698,20 @@
   margin-bottom: 20px;
 }
 
-.about-text p strong {
-  color: var(--blue-light);
-  font-weight: 700;
-}
+.about-text p strong { color: var(--blue-light); font-weight: 700; }
 
 .stats-section { margin-bottom: 120px; }
 
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 24px;
-  max-width: 1000px;
+  max-width: 1100px;
   margin: 0 auto;
 }
 
 .stat-block {
-  padding: 40px 28px;
+  padding: 40px 24px;
   background: linear-gradient(135deg, rgba(0, 180, 216, 0.08) 0%, rgba(0, 17, 31, 0.7) 50%, rgba(0, 180, 216, 0.05) 100%);
   backdrop-filter: blur(20px);
   border-radius: 20px;
@@ -795,7 +729,7 @@
 
 .stat-number {
   font-family: 'Playfair Display', serif;
-  font-size: 56px;
+  font-size: 52px;
   font-weight: 900;
   color: var(--blue-light);
   line-height: 1;
@@ -805,7 +739,7 @@
 }
 
 .stat-number span {
-  font-size: 24px;
+  font-size: 22px;
   color: var(--gold);
   margin-left: 4px;
 }
@@ -816,18 +750,21 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1.5px;
+  line-height: 1.4;
 }
 
 .values-section { margin-bottom: 120px; }
 
 .values-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 28px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .value-card {
-  padding: 40px 32px;
+  padding: 36px 28px;
   background: linear-gradient(135deg, rgba(0, 180, 216, 0.06) 0%, rgba(0, 17, 31, 0.7) 50%, rgba(0, 180, 216, 0.04) 100%);
   backdrop-filter: blur(20px);
   border-radius: 24px;
@@ -844,22 +781,22 @@
 }
 
 .value-icon {
-  font-size: 56px;
-  margin-bottom: 20px;
+  font-size: 48px;
+  margin-bottom: 18px;
   display: inline-block;
   filter: drop-shadow(0 8px 16px rgba(0, 180, 216, 0.4));
 }
 
 .value-card h3 {
   font-family: 'Playfair Display', serif;
-  font-size: 24px;
+  font-size: 20px;
   color: var(--white);
-  margin-bottom: 14px;
+  margin-bottom: 12px;
   font-weight: 700;
 }
 
 .value-card p {
-  font-size: 15px;
+  font-size: 14px;
   color: rgba(255, 255, 255, 0.7);
   line-height: 1.7;
 }
@@ -868,12 +805,14 @@
 
 .guarantee-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .guarantee-card {
-  padding: 32px 24px;
+  padding: 32px 22px;
   background: linear-gradient(135deg, rgba(0, 180, 216, 0.06) 0%, rgba(0, 17, 31, 0.7) 50%, rgba(0, 180, 216, 0.04) 100%);
   backdrop-filter: blur(20px);
   border-radius: 20px;
@@ -906,14 +845,14 @@
 
 .guarantee-card h4 {
   font-family: 'Playfair Display', serif;
-  font-size: 18px;
+  font-size: 17px;
   color: var(--white);
   margin-bottom: 10px;
   font-weight: 700;
 }
 
 .guarantee-card p {
-  font-size: 14px;
+  font-size: 13px;
   color: rgba(255, 255, 255, 0.65);
   line-height: 1.6;
 }
@@ -921,6 +860,19 @@
 /* ============================================= */
 /* ===== RESPONSIVE ===== */
 /* ============================================= */
+@media (max-width: 1100px) {
+  .nutrition-blocks,
+  .info-grid,
+  .guarantee-grid,
+  .stats-grid,
+  .values-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .ingredients-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 968px) {
   .about-grid,
   .product-detail-grid {
@@ -930,27 +882,32 @@
   .page-title { font-size: 48px; }
   .about-text h2,
   .product-detail-info h2 { font-size: 32px; }
-  .stat-number { font-size: 44px; }
   .product-price { font-size: 36px; }
-  .page-content .section-title { font-size: 36px; }
-  .nutrition-block .nutrient-value { font-size: 30px; }
+  .page-content .section-title { font-size: 34px; }
 }
 
 @media (max-width: 640px) {
-  .page-hero { padding: 160px 20px 80px; min-height: 50vh; }
+  .page-hero { padding: 120px 20px 80px; min-height: 45vh; }
   .page-title { font-size: 36px; }
   .page-subtitle { font-size: 16px; }
+
+  .nutrition-blocks,
+  .info-grid,
+  .ingredients-grid,
+  .guarantee-grid,
+  .stats-grid,
+  .values-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nutrition-block .nutrient-value { font-size: 28px; }
+  .stat-number { font-size: 40px; }
   .about-text h2 { font-size: 26px; }
   .about-text p { font-size: 15px; }
-  .stat-number { font-size: 36px; }
   .stat-block { padding: 32px 20px; }
   .specs-table { padding: 16px 20px; }
   .spec-row:hover { margin: 0 -20px; padding-left: 20px; padding-right: 20px; }
   .page-content { padding: 60px 0 100px; }
-  .info-block { padding: 28px 24px; }
   .intro-block { padding: 32px 24px; }
-  .info-block p,
   .intro-block p { font-size: 15px; }
-  .nutrition-block { padding: 24px 24px; }
-  .nutrition-block .nutrient-value { font-size: 28px; }
 }
