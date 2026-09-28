@@ -1,0 +1,324 @@
+/* ============================================= */
+/* ===== CONTACT PAGE ===== */
+/* ============================================= */
+
+.contact-hero {
+  min-height: 50vh;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 32px;
+  align-items: start;
+  margin-top: 20px;
+}
+
+/* ===== FORM CARD (WHITE) ===== */
+.contact-form-card {
+  background: #ffffff;
+  border-radius: 28px;
+  padding: 44px 40px;
+  box-shadow:
+    0 4px 6px rgba(0, 0, 0, 0.04),
+    0 20px 60px rgba(0, 31, 63, 0.12);
+  border: 1px solid #e2e8f0;
+}
+
+.contact-form-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  color: #001f3f;
+  margin-bottom: 28px;
+  padding-bottom: 18px;
+  border-bottom: 2px solid #e2e8f0;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.contact-form-title .heading-icon {
+  font-size: 26px;
+}
+
+.contact-form .form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.contact-form .form-group {
+  margin-bottom: 22px;
+}
+
+.contact-form label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: #001f3f;
+  margin-bottom: 8px;
+  letter-spacing: 0.3px;
+}
+
+.contact-form .req {
+  color: #ef4444;
+  font-weight: 800;
+}
+
+.contact-form .opt {
+  color: #94a3b8;
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 14px 18px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 15px;
+  font-family: 'Inter', sans-serif;
+  color: #001f3f;
+  background: #f8fafc;
+  transition: all 0.25s ease;
+  outline: none;
+  font-weight: 500;
+}
+
+.contact-form input:hover,
+.contact-form textarea:hover {
+  border-color: #cbd5e1;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #00b4d8;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(0, 180, 216, 0.15);
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #94a3b8;
+  font-weight: 400;
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 90px;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ===== SUBMIT BUTTON ===== */
+.submit-btn {
+  width: 100%;
+  padding: 20px 32px;
+  border: none;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #00b4d8, #90e0ef);
+  color: #00111f;
+  font-family: 'Inter', sans-serif;
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow:
+    0 8px 32px rgba(0, 180, 216, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.submit-btn span {
+  font-size: 20px;
+}
+
+.submit-btn:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 16px 48px rgba(0, 180, 216, 0.7),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.submit-btn:active {
+  transform: translateY(-1px) scale(0.99);
+}
+
+.submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.form-benefits {
+  text-align: center;
+  margin-top: 18px;
+  font-size: 13px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* ===== INFO CARD (DARK) ===== */
+.contact-info-card {
+  background: linear-gradient(145deg, #001f3f 0%, #00111f 100%);
+  border-radius: 28px;
+  padding: 40px 36px;
+  color: #ffffff;
+  box-shadow:
+    0 4px 6px rgba(0, 0, 0, 0.1),
+    0 20px 60px rgba(0, 31, 63, 0.4);
+  border: 1px solid rgba(0, 180, 216, 0.3);
+  position: sticky;
+  top: 100px;
+  overflow: hidden;
+}
+
+.contact-info-card::before {
+  content: '';
+  position: absolute;
+  top: -50%; right: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(circle at 100% 0%, rgba(0, 180, 216, 0.15) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.contact-info-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  color: #ffffff;
+  margin-bottom: 28px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(0, 180, 216, 0.25);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+}
+
+.contact-info-title .heading-icon {
+  font-size: 24px;
+}
+
+.info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  position: relative;
+}
+
+.info-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.info-icon {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(0, 180, 216, 0.2), rgba(144, 224, 239, 0.1));
+  border: 1px solid rgba(0, 180, 216, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  box-shadow: 0 4px 16px rgba(0, 180, 216, 0.2);
+}
+
+.info-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: 2px;
+}
+
+.info-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #90e0ef;
+  font-weight: 700;
+}
+
+.info-value {
+  font-size: 15px;
+  color: #ffffff;
+  line-height: 1.5;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+a.info-value:hover {
+  color: #90e0ef;
+}
+
+.info-divider {
+  height: 1px;
+  background: rgba(0, 180, 216, 0.2);
+  margin: 28px 0 24px;
+  position: relative;
+}
+
+.info-benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+}
+
+.info-benefit {
+  font-size: 14px;
+  color: #90e0ef;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 968px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .contact-info-card {
+    position: static;
+  }
+}
+
+@media (max-width: 640px) {
+  .contact-form-card {
+    padding: 32px 24px;
+    border-radius: 22px;
+  }
+  .contact-info-card {
+    padding: 32px 24px;
+    border-radius: 22px;
+  }
+  .contact-form .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .contact-form-title,
+  .contact-info-title {
+    font-size: 20px;
+  }
+  .submit-btn {
+    font-size: 15px;
+    padding: 18px 24px;
+  }
+  .info-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+}
