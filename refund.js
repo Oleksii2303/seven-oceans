@@ -3,7 +3,7 @@
 // ===== EMAILJS CONFIG =====
 const EMAILJS_PUBLIC_KEY = 'E7pjNV8SQNHAO65U6';
 const EMAILJS_SERVICE_ID = 'service_k41npu2';
-const EMAILJS_TEMPLATE_ID = 'template_sa4ds4b';
+const EMAILJS_TEMPLATE_ID = 'template_uvl8qx';
 
 if (typeof emailjs !== 'undefined') {
   emailjs.init(EMAILJS_PUBLIC_KEY);
