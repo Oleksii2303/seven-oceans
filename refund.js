@@ -3,7 +3,7 @@
 // ===== EMAILJS CONFIG =====
 const EMAILJS_PUBLIC_KEY = 'E7pjNV8SQNHAO65U6';
 const EMAILJS_SERVICE_ID = 'service_k41npu2';
-const EMAILJS_TEMPLATE_ID = 'template_fsvvhpa'; // Той самий, що для замовлень
+const EMAILJS_TEMPLATE_ID = 'template_sa4ds4b';
 
 if (typeof emailjs !== 'undefined') {
   emailjs.init(EMAILJS_PUBLIC_KEY);
@@ -41,25 +41,18 @@ document.addEventListener('DOMContentLoaded', () => {
     submitBtn.disabled = true;
     submitBtn.innerHTML = '<span>⏳</span> Sending request...';
 
-    // Prepare data — використовуємо існуючий template
+    // Prepare data for refund template
     const templateParams = {
       customer_name: name,
       customer_email: email,
-      customer_phone: '—',
-      address: `Order ID: ${orderId}\nReason: ${reason}\nDetails: ${details || 'No details'}`,
-      address2: '',
-      city: '',
-      state: '',
-      zip: '',
-      country: '—',
-      quantity: '—',
-      total: '—',
-      notes: `🔄 REFUND REQUEST\nOrder: ${orderId}\nReason: ${reason}\nDetails: ${details || 'No details'}`
+      order_id: orderId,
+      reason: reason,
+      details: details || 'No additional details provided'
     };
 
     try {
       await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
-      console.log('✅ Refund request sent');
+      console.log('✅ Refund request sent successfully');
 
       showSuccess({
         name: name,
