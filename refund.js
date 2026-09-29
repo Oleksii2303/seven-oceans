@@ -3,7 +3,7 @@
 // ===== EMAILJS CONFIG =====
 const EMAILJS_PUBLIC_KEY = 'E7pjNV8SQNHAO65U6';
 const EMAILJS_SERVICE_ID = 'service_k41npu2';
-const EMAILJS_TEMPLATE_ID = 'template_uvl8qx';
+const EMAILJS_TEMPLATE_ID = 'template_sa4ds4b';
 
 if (typeof emailjs !== 'undefined') {
   emailjs.init(EMAILJS_PUBLIC_KEY);
@@ -23,7 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const reason = document.getElementById('refundReason').value;
     const details = document.getElementById('refundDetails').value.trim();
 
-    // Validation
     if (!name || !email || !orderId || !reason) {
       alert('⚠️ Please fill in all required fields marked with *');
       return;
@@ -35,13 +34,11 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // Disable button
     const submitBtn = form.querySelector('.refund-submit');
     const originalText = submitBtn.innerHTML;
     submitBtn.disabled = true;
     submitBtn.innerHTML = '<span>⏳</span> Sending request...';
 
-    // Prepare data for refund template
     const templateParams = {
       customer_name: name,
       customer_email: email,
@@ -50,9 +47,12 @@ document.addEventListener('DOMContentLoaded', () => {
       details: details || 'No additional details provided'
     };
 
+    console.log('📤 Sending refund request:', templateParams);
+    console.log('📧 Using Template ID:', EMAILJS_TEMPLATE_ID);
+
     try {
-      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
-      console.log('✅ Refund request sent successfully');
+      const response = await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
+      console.log('✅ Refund request sent successfully:', response);
 
       showSuccess({
         name: name,
@@ -64,15 +64,15 @@ document.addEventListener('DOMContentLoaded', () => {
       form.reset();
 
     } catch (error) {
-      console.error('❌ EmailJS error:', error);
-      alert('❌ Failed to send request. Please try again or email us directly at info@sevenoceansemergency.com');
+      console.error('❌ EmailJS error details:', error);
+      console.error('❌ Error text:', error.text || error.message);
+      alert('❌ Failed to send. Error: ' + (error.text || error.message || 'Unknown') + '\n\nPlease contact info@sevenoceansemergency.com');
     } finally {
       submitBtn.disabled = false;
       submitBtn.innerHTML = originalText;
     }
   });
 
-  // ===== SUCCESS MODAL =====
   function showSuccess(data) {
     const overlay = document.createElement('div');
     overlay.className = 'checkout-success';
