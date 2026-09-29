@@ -3,7 +3,7 @@
 // ===== EMAILJS CONFIG =====
 const EMAILJS_PUBLIC_KEY = 'E7pjNV8SQNHAO65U6';
 const EMAILJS_SERVICE_ID = 'service_k41npu2';
-const EMAILJS_TEMPLATE_ID = 'template_uvl8qx';
+const EMAILJS_TEMPLATE_ID = 'template_fsvvhpa';
 
 if (typeof emailjs !== 'undefined') {
   emailjs.init(EMAILJS_PUBLIC_KEY);
@@ -39,16 +39,23 @@ document.addEventListener('DOMContentLoaded', () => {
     submitBtn.disabled = true;
     submitBtn.innerHTML = '<span>⏳</span> Sending request...';
 
+    // Data mapped to Contact Us template fields
     const templateParams = {
       customer_name: name,
       customer_email: email,
-      order_id: orderId,
-      reason: reason,
-      details: details || 'No additional details provided'
+      customer_phone: '—',
+      address: '—',
+      address2: '',
+      city: '',
+      state: '',
+      zip: '',
+      country: '—',
+      quantity: '—',
+      total: '—',
+      notes: `🔄 REFUND REQUEST\n\nOrder ID: ${orderId}\nReason: ${reason}\nDetails: ${details || 'No additional details'}`
     };
 
     console.log('📤 Sending refund request...');
-    console.log('Template ID:', EMAILJS_TEMPLATE_ID);
     console.log('Data:', templateParams);
 
     try {
