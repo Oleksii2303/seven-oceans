@@ -1,4 +1,4 @@
-// ===== RAIN + DRIPS + MOUSE + FAB =====
+// ===== MAIN SCRIPT — NO RAIN =====
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -23,84 +23,18 @@ document.addEventListener('DOMContentLoaded', () => {
   cursorGlow.className = 'cursor-glow';
   document.body.appendChild(cursorGlow);
 
-  const mouse = { x: -9999, y: -9999, active: false };
-
   document.addEventListener('mousemove', (e) => {
-    mouse.x = e.clientX;
-    mouse.y = e.clientY;
-    mouse.active = true;
     cursorGlow.style.left = e.clientX + 'px';
     cursorGlow.style.top = e.clientY + 'px';
   });
 
   document.addEventListener('mouseleave', () => {
-    mouse.x = -9999;
-    mouse.y = -9999;
-    mouse.active = false;
+    cursorGlow.style.opacity = '0';
   });
 
-  // ===== RAIN (2 LAYERS — BG + MID, NO GLASSY) =====
-  const rain = document.getElementById('rain');
-  const raindrops = [];
-
-  if (rain) {
-    // Layer 1: background thin lines
-    for (let i = 0; i < 50; i++) {
-      const drop = document.createElement('div');
-      drop.className = 'raindrop-bg';
-      drop.style.left = Math.random() * 100 + '%';
-      drop.style.animationDuration = (0.8 + Math.random() * 1.2) + 's';
-      drop.style.animationDelay = Math.random() * 4 + 's';
-      drop.style.height = (30 + Math.random() * 50) + 'px';
-      drop.style.opacity = 0.2 + Math.random() * 0.3;
-      drop.dataset.ox = 0;
-      rain.appendChild(drop);
-      raindrops.push(drop);
-    }
-
-    // Layer 2: middle medium drops
-    for (let i = 0; i < 30; i++) {
-      const drop = document.createElement('div');
-      drop.className = 'raindrop-mid';
-      drop.style.left = Math.random() * 100 + '%';
-      drop.style.animationDuration = (1.5 + Math.random() * 1.5) + 's';
-      drop.style.animationDelay = Math.random() * 5 + 's';
-      drop.style.height = (20 + Math.random() * 30) + 'px';
-      drop.style.opacity = 0.3 + Math.random() * 0.3;
-      drop.dataset.ox = 0;
-      rain.appendChild(drop);
-      raindrops.push(drop);
-    }
-  }
-
-  // ===== RAIN MOUSE REPULSION =====
-  function animateRain() {
-    raindrops.forEach(drop => {
-      const rect = drop.getBoundingClientRect();
-      const dropX = rect.left + rect.width / 2;
-      const dropY = rect.top + rect.height / 2;
-      const dx = dropX - mouse.x;
-      const dy = dropY - mouse.y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      const radius = 150;
-
-      let targetX = 0;
-
-      if (mouse.active && dist < radius) {
-        const force = (radius - dist) / radius;
-        const angle = Math.atan2(dy, dx);
-        targetX = Math.cos(angle) * force * 70;
-      }
-
-      const ox = parseFloat(drop.dataset.ox);
-      const nx = ox + (targetX - ox) * 0.12;
-
-      drop.dataset.ox = nx;
-      drop.style.transform = `translateX(${nx}px)`;
-    });
-    requestAnimationFrame(animateRain);
-  }
-  requestAnimationFrame(animateRain);
+  document.addEventListener('mouseenter', () => {
+    cursorGlow.style.opacity = '1';
+  });
 
   // ===== LIGHTNING =====
   const lightning = document.getElementById('lightning');
