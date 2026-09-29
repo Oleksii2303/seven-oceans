@@ -32,7 +32,7 @@
   <style>
     /* ===== REFUND PAGE — MODERN DESIGN ===== */
     .refund-content {
-      padding: 80px 0 100px;
+      padding: 80px 0 120px;
       background: #0a1929;
       position: relative;
     }
@@ -43,16 +43,16 @@
       height: 200px;
       background: linear-gradient(180deg, transparent 0%, #0a1929 100%);
       pointer-events: none;
+      z-index: 1;
     }
     .refund-content .container {
-      max-width: 1200px;
+      max-width: 900px;
       margin: 0 auto;
       padding: 0 20px;
       position: relative;
       z-index: 2;
     }
 
-    /* ===== INTRO CARD ===== */
     .refund-intro {
       max-width: 900px;
       margin: 0 auto 70px;
@@ -101,15 +101,9 @@
       line-height: 1.75;
       margin-bottom: 10px;
     }
-    .refund-intro p strong {
-      color: #90e0ef;
-      font-weight: 700;
-    }
+    .refund-intro p strong { color: #90e0ef; font-weight: 700; }
 
-    /* ===== SECTION TITLES ===== */
-    .refund-section {
-      margin-bottom: 80px;
-    }
+    .refund-section { margin-bottom: 80px; }
     .refund-eyebrow {
       display: block;
       text-align: center;
@@ -139,7 +133,6 @@
       font-style: italic;
     }
 
-    /* ===== CARDS GRID ===== */
     .refund-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -150,10 +143,6 @@
     .refund-grid.three {
       grid-template-columns: repeat(3, 1fr);
       max-width: 1000px;
-    }
-    .refund-grid.two {
-      grid-template-columns: repeat(2, 1fr);
-      max-width: 850px;
     }
 
     .refund-card {
@@ -208,10 +197,7 @@
       margin-bottom: 8px;
     }
     .refund-card p:last-child { margin-bottom: 0; }
-    .refund-card p strong {
-      color: #90e0ef;
-      font-weight: 700;
-    }
+    .refund-card p strong { color: #90e0ef; font-weight: 700; }
     .refund-card ul {
       list-style: none;
       padding: 0;
@@ -234,60 +220,228 @@
       font-size: 15px;
     }
 
-    /* ===== CONTACT BLOCK ===== */
-    .refund-contact {
-      max-width: 900px;
+    /* ===== REFUND FORM ===== */
+    .refund-form-wrapper {
+      max-width: 700px;
       margin: 0 auto;
-      padding: 36px 40px;
-      background: linear-gradient(135deg, rgba(0,180,216,0.08) 0%, rgba(0,17,31,0.8) 50%, rgba(0,180,216,0.05) 100%);
+      padding: 44px 40px;
+      background: linear-gradient(135deg, rgba(0,180,216,0.08) 0%, rgba(0,17,31,0.85) 50%, rgba(0,180,216,0.05) 100%);
       backdrop-filter: blur(20px);
-      border-radius: 24px;
+      border-radius: 28px;
       border: 1px solid rgba(0,180,216,0.3);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.45);
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 100px rgba(0,180,216,0.12);
+      position: relative;
+    }
+    .refund-form-wrapper::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 28px;
+      padding: 2px;
+      background: linear-gradient(135deg, rgba(0,180,216,0.7), rgba(144,224,239,0.15), rgba(244,169,0,0.5), rgba(0,180,216,0.7));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      animation: borderRotate 6s linear infinite;
+      pointer-events: none;
+    }
+    .refund-form-wrapper h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      color: #ffffff;
+      margin-bottom: 24px;
       text-align: center;
+      font-weight: 700;
+      position: relative;
     }
-    .refund-contact-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
+    .refund-form-wrapper h3::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 3px;
+      margin: 14px auto 0;
+      background: linear-gradient(90deg, #00b4d8, transparent);
+      border-radius: 2px;
     }
-    .refund-contact-icon {
-      width: 48px;
-      height: 48px;
+    .refund-form .form-group {
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .refund-form label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      color: #90e0ef;
+      margin-bottom: 8px;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+    }
+    .refund-form label .req {
+      color: #ef4444;
+      font-weight: 800;
+    }
+    .refund-form input,
+    .refund-form select,
+    .refund-form textarea {
+      width: 100%;
+      padding: 14px 18px;
+      border: 1.5px solid rgba(0,180,216,0.25);
+      border-radius: 12px;
+      font-size: 15px;
+      font-family: 'Inter', sans-serif;
+      color: #ffffff;
+      background: rgba(0,17,31,0.6);
+      transition: all 0.25s ease;
+      outline: none;
+      font-weight: 500;
+    }
+    .refund-form input::placeholder,
+    .refund-form textarea::placeholder {
+      color: rgba(255,255,255,0.4);
+    }
+    .refund-form input:focus,
+    .refund-form select:focus,
+    .refund-form textarea:focus {
+      border-color: #00b4d8;
+      background: rgba(0,17,31,0.85);
+      box-shadow: 0 0 0 4px rgba(0,180,216,0.15);
+    }
+    .refund-form select {
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2390e0ef' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 18px center;
+      padding-right: 44px;
+    }
+    .refund-form select option {
+      background: #001f3f;
+      color: #ffffff;
+    }
+    .refund-form textarea {
+      resize: vertical;
+      min-height: 100px;
+      font-family: 'Inter', sans-serif;
+    }
+    .refund-submit {
+      width: 100%;
+      padding: 18px 32px;
+      border: none;
       border-radius: 14px;
-      background: linear-gradient(135deg, rgba(0,180,216,0.25), rgba(144,224,239,0.1));
-      border: 1px solid rgba(0,180,216,0.4);
+      background: linear-gradient(135deg, #00b4d8, #90e0ef);
+      color: #00111f;
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 32px rgba(0,180,216,0.45), inset 0 1px 0 rgba(255,255,255,0.4);
+      margin-top: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 22px;
+      gap: 10px;
     }
-    .refund-contact-label {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: #90e0ef;
-      font-weight: 700;
+    .refund-submit:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 48px rgba(0,180,216,0.6), inset 0 1px 0 rgba(255,255,255,0.4);
     }
-    .refund-contact-value {
-      font-size: 14.5px;
-      color: #ffffff;
-      font-weight: 500;
-      line-height: 1.5;
-      text-decoration: none;
+    .refund-submit:active {
+      transform: translateY(-1px) scale(0.99);
     }
-    .refund-contact-value a {
-      color: #90e0ef;
-      text-decoration: none;
-      transition: color 0.2s;
+    .refund-submit:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
     }
-    .refund-contact-value a:hover { color: #ffffff; }
+    .refund-note {
+      text-align: center;
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      margin-top: 18px;
+      line-height: 1.6;
+    }
+    .refund-note strong { color: #90e0ef; }
 
-    /* ===== RESPONSIVE ===== */
+    /* ===== SUCCESS MODAL ===== */
+    .checkout-success {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,17,31,0.9);
+      backdrop-filter: blur(12px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 100000;
+      padding: 20px;
+      animation: fadeIn 0.3s ease;
+    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    .success-box {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 48px 40px;
+      max-width: 500px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+      animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.85); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .success-icon { font-size: 72px; margin-bottom: 20px; animation: bounce 0.6s ease; }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+    .success-box h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      color: #001f3f;
+      margin-bottom: 16px;
+      font-weight: 900;
+    }
+    .success-box p {
+      color: #475569;
+      font-size: 16px;
+      margin-bottom: 12px;
+      line-height: 1.6;
+    }
+    .success-box p strong { color: #001f3f; font-weight: 700; }
+    .success-email { color: #00b4d8 !important; font-weight: 600; font-size: 15px !important; }
+    .success-info {
+      background: #f1f5f9;
+      border-radius: 12px;
+      padding: 16px;
+      margin: 24px 0;
+      border: 1px solid #e2e8f0;
+    }
+    .success-info p { font-size: 13px; color: #64748b; margin: 0; }
+    .success-box .btn {
+      margin-top: 16px;
+      padding: 16px 40px;
+      background: linear-gradient(135deg, #00b4d8, #90e0ef);
+      color: #00111f;
+      font-weight: 800;
+      border-radius: 14px;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 24px rgba(0,180,216,0.4);
+      border: none;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+    }
+    .success-box .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(0,180,216,0.6);
+    }
+
     @media (max-width: 1100px) {
       .refund-grid { grid-template-columns: repeat(2, 1fr); }
       .refund-grid.three { grid-template-columns: repeat(2, 1fr); }
@@ -298,11 +452,13 @@
       .refund-intro h2 { font-size: 24px; }
       .refund-intro p { font-size: 15px; }
       .refund-title { font-size: 30px; }
-      .refund-grid,
-      .refund-grid.three,
-      .refund-grid.two { grid-template-columns: 1fr; }
-      .refund-contact { grid-template-columns: 1fr; padding: 28px 24px; }
+      .refund-grid, .refund-grid.three { grid-template-columns: 1fr; }
       .refund-section { margin-bottom: 60px; }
+      .refund-form-wrapper { padding: 28px 22px; border-radius: 22px; }
+      .refund-form-wrapper h3 { font-size: 22px; }
+      .success-box { padding: 36px 24px; }
+      .success-box h2 { font-size: 24px; }
+      .success-icon { font-size: 56px; }
     }
   </style>
 </head>
@@ -339,7 +495,6 @@
   <section class="refund-content">
     <div class="container">
 
-      <!-- INTRO -->
       <div class="refund-intro">
         <span class="refund-intro-icon">🛡️</span>
         <h2>Shop With Confidence</h2>
@@ -347,7 +502,6 @@
         <p><strong>30-day money back guarantee.</strong> Simple, honest, no fine print.</p>
       </div>
 
-      <!-- POLICY -->
       <div class="refund-section">
         <span class="refund-eyebrow">📋 Policy</span>
         <h2 class="refund-title">Our Refund Policy</h2>
@@ -360,7 +514,6 @@
             <p>You have <strong>30 days</strong> from the delivery date to request a refund.</p>
             <p>No questions asked. No restocking fees.</p>
           </div>
-
           <div class="refund-card">
             <div class="refund-card-icon">📦</div>
             <h3>Product Condition</h3>
@@ -370,14 +523,12 @@
               <li>Damaged on arrival — full refund</li>
             </ul>
           </div>
-
           <div class="refund-card">
             <div class="refund-card-icon">💳</div>
             <h3>Refund Method</h3>
             <p>Refunds are issued to the <strong>original payment method</strong>.</p>
             <p>For crypto payments — refund in <strong>USDT</strong> at current rate.</p>
           </div>
-
           <div class="refund-card">
             <div class="refund-card-icon">⏱️</div>
             <h3>Processing Time</h3>
@@ -390,7 +541,6 @@
         </div>
       </div>
 
-      <!-- HOW TO -->
       <div class="refund-section">
         <span class="refund-eyebrow">📝 How To</span>
         <h2 class="refund-title">How to Request a Refund</h2>
@@ -399,8 +549,8 @@
         <div class="refund-grid three">
           <div class="refund-card">
             <div class="refund-card-icon">1️⃣</div>
-            <h3>Contact Us</h3>
-            <p>Email us at <strong>info@sevenoceansemergency.com</strong> with your order number.</p>
+            <h3>Fill the Form</h3>
+            <p>Complete the <strong>refund request form</strong> below with your order details.</p>
           </div>
           <div class="refund-card">
             <div class="refund-card-icon">2️⃣</div>
@@ -415,7 +565,61 @@
         </div>
       </div>
 
-      <!-- FAQ -->
+      <!-- ===== REFUND REQUEST FORM ===== -->
+      <div class="refund-section">
+        <span class="refund-eyebrow">📩 Submit Request</span>
+        <h2 class="refund-title">Refund Request Form</h2>
+        <p class="refund-subtitle">We'll respond within 24 hours</p>
+
+        <div class="refund-form-wrapper">
+          <h3>Tell us about your order</h3>
+          <form id="refundForm" class="refund-form">
+
+            <div class="form-group">
+              <label for="refundName">Full Name <span class="req">*</span></label>
+              <input type="text" id="refundName" name="refundName" required placeholder="John Smith">
+            </div>
+
+            <div class="form-group">
+              <label for="refundEmail">Email Address <span class="req">*</span></label>
+              <input type="email" id="refundEmail" name="refundEmail" required placeholder="john@example.com">
+            </div>
+
+            <div class="form-group">
+              <label for="refundOrderId">Order ID / Reference <span class="req">*</span></label>
+              <input type="text" id="refundOrderId" name="refundOrderId" required placeholder="e.g. b3e9fcaa7fe547e9d...">
+            </div>
+
+            <div class="form-group">
+              <label for="refundReason">Reason for Refund <span class="req">*</span></label>
+              <select id="refundReason" name="refundReason" required>
+                <option value="">Select a reason...</option>
+                <option value="Damaged in transit">📦 Damaged in transit</option>
+                <option value="Not satisfied with product">😕 Not satisfied with product</option>
+                <option value="Wrong item received">❌ Wrong item received</option>
+                <option value="Changed my mind">🤔 Changed my mind</option>
+                <option value="Other">💬 Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="refundDetails">Additional Details <span class="opt">(optional)</span></label>
+              <textarea id="refundDetails" name="refundDetails" rows="4" placeholder="Tell us more about the issue..."></textarea>
+            </div>
+
+            <button type="submit" class="refund-submit">
+              <span>📩</span>
+              Submit Refund Request
+            </button>
+
+            <p class="refund-note">
+              We'll reply to <strong>your email</strong> within 24 hours with return instructions.
+            </p>
+
+          </form>
+        </div>
+      </div>
+
       <div class="refund-section">
         <span class="refund-eyebrow">❓ FAQ</span>
         <h2 class="refund-title">Common Questions</h2>
@@ -441,31 +645,6 @@
             <div class="refund-card-icon">❓</div>
             <h3>International refunds?</h3>
             <p>Available — but return shipping is the customer's responsibility outside the US.</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- CONTACT -->
-      <div class="refund-section" style="margin-bottom: 0;">
-        <span class="refund-eyebrow">📞 Need Help?</span>
-        <h2 class="refund-title">Contact for Refunds</h2>
-        <p class="refund-subtitle">We respond within 24 hours</p>
-
-        <div class="refund-contact">
-          <div class="refund-contact-item">
-            <div class="refund-contact-icon">📧</div>
-            <span class="refund-contact-label">Email</span>
-            <span class="refund-contact-value"><a href="mailto:info@sevenoceansemergency.com">info@sevenoceansemergency.com</a></span>
-          </div>
-          <div class="refund-contact-item">
-            <div class="refund-contact-icon">📍</div>
-            <span class="refund-contact-label">Address</span>
-            <span class="refund-contact-value">3903 Castlewood Rd<br>Richmond, VA 23234</span>
-          </div>
-          <div class="refund-contact-item">
-            <div class="refund-contact-icon">⏱️</div>
-            <span class="refund-contact-label">Response</span>
-            <span class="refund-contact-value">Within 24 hours</span>
           </div>
         </div>
       </div>
@@ -504,6 +683,8 @@
           <ul>
             <li><a href="about.html">About Us</a></li>
             <li><a href="contact.html">Contact</a></li>
+            <li>📧 info@sevenoceansemergency.com</li>
+            <li>📍 Richmond, VA 23234</li>
           </ul>
         </div>
         <div class="footer-col">
@@ -522,6 +703,8 @@
     </div>
   </footer>
 
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script src="script.js"></script>
+  <script src="refund.js"></script>
 </body>
 </html>
