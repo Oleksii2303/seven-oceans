@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Track Your Order — Seven Oceans Emergency Food Ration</title>
+  <meta name="description" content="Track your Seven Oceans Emergency Food Ration order. Enter your Order ID to see shipping status and live map.">
+  <meta name="robots" content="noindex, follow">
+  
+  <link rel="canonical" href="https://sevenoceansemergency.com/track.html">
+  
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="/favicon.svg">
+  <meta name="theme-color" content="#001f3f">
+  
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KR8SYZTL9H"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-KR8SYZTL9H');
+  </script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="pages.css">
+
+  <style>
+    .track-content {
+      padding: 80px 0 120px;
+      background: #0a1929;
+      position: relative;
+    }
+    .track-content::before {
+      content: '';
+      position: absolute;
+      top: -100px; left: 0; right: 0;
+      height: 200px;
+      background: linear-gradient(180deg, transparent 0%, #0a1929 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
+    .track-content .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ===== SEARCH FORM ===== */
+    .track-form-wrapper {
+      max-width: 700px;
+      margin: 0 auto 50px;
+      padding: 44px 40px;
+      background: linear-gradient(135deg, rgba(0,180,216,0.1) 0%, rgba(0,17,31,0.85) 50%, rgba(0,180,216,0.06) 100%);
+      backdrop-filter: blur(20px);
+      border-radius: 28px;
+      border: 1px solid rgba(0,180,216,0.3);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 100px rgba(0,180,216,0.15);
+      position: relative;
+      overflow: hidden;
+    }
+    .track-form-wrapper::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 28px;
+      padding: 2px;
+      background: linear-gradient(135deg, rgba(0,180,216,0.8), rgba(144,224,239,0.15), rgba(244,169,0,0.5), rgba(0,180,216,0.8));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      animation: borderRotate 6s linear infinite;
+      pointer-events: none;
+    }
+    @keyframes borderRotate {
+      0% { background-position: 0% 0%; }
+      100% { background-position: 200% 200%; }
+    }
+
+    .track-icon {
+      font-size: 56px;
+      text-align: center;
+      margin-bottom: 16px;
+      display: block;
+      filter: drop-shadow(0 8px 20px rgba(0,180,216,0.5));
+    }
+    .track-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      color: #ffffff;
+      text-align: center;
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+    .track-subtitle {
+      font-size: 15px;
+      color: rgba(255,255,255,0.7);
+      text-align: center;
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+
+    .track-form .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .track-form .form-group {
+      position: relative;
+    }
+    .track-form label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      color: #90e0ef;
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .track-form input {
+      width: 100%;
+      padding: 16px 18px;
+      border: 1.5px solid rgba(0,180,216,0.3);
+      border-radius: 14px;
+      font-size: 15px;
+      font-family: 'Inter', sans-serif;
+      color: #ffffff;
+      background: rgba(0,17,31,0.6);
+      transition: all 0.25s ease;
+      outline: none;
+      font-weight: 500;
+    }
+    .track-form input::placeholder {
+      color: rgba(255,255,255,0.35);
+    }
+    .track-form input:focus {
+      border-color: #00b4d8;
+      background: rgba(0,17,31,0.85);
+      box-shadow: 0 0 0 4px rgba(0,180,216,0.15);
+    }
+    .track-submit {
+      width: 100%;
+      padding: 18px 32px;
+      border: none;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #00b4d8, #90e0ef);
+      color: #00111f;
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 32px rgba(0,180,216,0.45), inset 0 1px 0 rgba(255,255,255,0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .track-submit:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 48px rgba(0,180,216,0.6), inset 0 1px 0 rgba(255,255,255,0.4);
+    }
+    .track-submit:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    /* ===== RESULTS ===== */
+    .track-results {
+      display: none;
+    }
+    .track-results.show { display: block; animation: slideUp 0.5s ease; }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ===== MAP ===== */
+    .track-map-wrapper {
+      margin-bottom: 28px;
+      padding: 20px;
+      background: linear-gradient(135deg, rgba(0,180,216,0.08) 0%, rgba(0,17,31,0.85) 50%, rgba(0,180,216,0.05) 100%);
+      backdrop-filter: blur(20px);
+      border-radius: 24px;
+      border: 1px solid rgba(0,180,216,0.3);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+    .track-map-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .track-map-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      color: #ffffff;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .track-status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      background: rgba(0,180,216,0.2);
+      color: #90e0ef;
+      border: 1px solid rgba(0,180,216,0.5);
+      border-radius: 40px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+    .track-status-badge.in-transit {
+      background: rgba(244,169,0,0.2);
+      color: #f4a900;
+      border-color: rgba(244,169,0,0.5);
+    }
+    .track-status-badge.delivered {
+      background: rgba(0,212,168,0.2);
+      color: #00d4a8;
+      border-color: rgba(0,212,168,0.5);
+    }
+
+    #trackMap {
+      width: 100%;
+      height: 420px;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #00111f;
+      z-index: 1;
+    }
+
+    /* Custom Leaflet marker style */
+    .custom-marker {
+      background: transparent;
+      border: none;
+    }
+    .marker-dot {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 900;
+      color: #00111f;
+      border: 3px solid rgba(0,17,31,0.9);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    }
+    .marker-dot.completed {
+      background: linear-gradient(135deg, #00b4d8, #90e0ef);
+    }
+    .marker-dot.pending {
+      background: linear-gradient(135deg, #f4a900, #ffd166);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+
+    /* ===== ORDER INFO CARD ===== */
+    .track-info-card {
+      padding: 32px 28px;
+      background: linear-gradient(135deg, rgba(0,212,168,0.08) 0%, rgba(0,17,31,0.85) 50%, rgba(0,180,216,0.06) 100%);
+      backdrop-filter: blur(20px);
+      border-radius: 24px;
+      border: 1px solid rgba(0,212,168,0.3);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      margin-bottom: 24px;
+    }
+    .track-info-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      color: #ffffff;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+    .track-info-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(0,180,216,0.15);
+      font-size: 15px;
+      gap: 20px;
+    }
+    .track-info-row:last-of-type { border-bottom: none; }
+    .track-info-label {
+      color: rgba(255,255,255,0.6);
+      font-weight: 500;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .track-info-value {
+      color: #ffffff;
+      font-weight: 700;
+      word-break: break-all;
+      text-align: right;
+    }
+    .track-info-value.mono {
+      font-family: 'Courier New', monospace;
+      letter-spacing: 1px;
+      color: #90e0ef;
+    }
+    .track-carrier-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 16px 24px;
+      margin-top: 20px;
+      background: linear-gradient(135deg, #00d4a8, #00b4d8);
+      color: #00111f;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      border-radius: 14px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 32px rgba(0,212,168,0.4);
+      border: none;
+      cursor: pointer;
+    }
+    .track-carrier-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 48px rgba(0,212,168,0.6);
+    }
+
+    /* ===== TIMELINE ===== */
+    .track-timeline-card {
+      padding: 32px 28px;
+      background: linear-gradient(135deg, rgba(0,180,216,0.06) 0%, rgba(0,17,31,0.85) 50%, rgba(0,180,216,0.04) 100%);
+      backdrop-filter: blur(20px);
+      border-radius: 24px;
+      border: 1px solid rgba(0,180,216,0.25);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+    .track-timeline-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      color: #ffffff;
+      margin-bottom: 24px;
+      font-weight: 700;
+    }
+    .timeline {
+      position: relative;
+      padding-left: 36px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 11px;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: linear-gradient(180deg, #00b4d8 0%, rgba(0,180,216,0.2) 100%);
+    }
+    .timeline-item {
+      position: relative;
+      padding-bottom: 28px;
+    }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-dot {
+      position: absolute;
+      left: -36px;
+      top: 0;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #00b4d8, #90e0ef);
+      border: 3px solid #0a1929;
+      box-shadow: 0 0 20px rgba(0,180,216,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: #00111f;
+      font-weight: 900;
+    }
+    .timeline-item.pending .timeline-dot {
+      background: rgba(148,163,184,0.3);
+      box-shadow: none;
+      border-color: rgba(148,163,184,0.5);
+    }
+    .timeline-content h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      color: #ffffff;
+      margin-bottom: 4px;
+      font-weight: 700;
+    }
+    .timeline-content p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 4px;
+      line-height: 1.5;
+    }
+    .timeline-date {
+      font-size: 12px;
+      color: #90e0ef;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .timeline-item.pending .timeline-content h4,
+    .timeline-item.pending .timeline-content p {
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* ===== ERROR & HELP ===== */
+    .track-error {
+      margin-top: 24px;
+      padding: 20px 24px;
+      background: rgba(239,68,68,0.1);
+      border: 1px solid rgba(239,68,68,0.4);
+      border-radius: 16px;
+      color: #fca5a5;
+      text-align: center;
+      font-size: 15px;
+      display: none;
+    }
+    .track-error.show { display: block; animation: slideUp 0.4s ease; }
+    .track-error strong { color: #f87171; display: block; margin-bottom: 6px; font-size: 16px; }
+
+    .track-help {
+      margin-top: 32px;
+      padding: 20px 24px;
+      background: rgba(0,180,216,0.06);
+      border-radius: 16px;
+      border: 1px solid rgba(0,180,216,0.2);
+      text-align: center;
+    }
+    .track-help p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.7;
+      margin: 0;
+    }
+    .track-help a {
+      color: #90e0ef;
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(144,224,239,0.4);
+      transition: all 0.2s;
+    }
+    .track-help a:hover {
+      color: #ffffff;
+      border-bottom-color: #00b4d8;
+    }
+    .track-help strong { color: #90e0ef; }
+
+    @media (max-width: 768px) {
+      .track-content { padding: 60px 0 80px; }
+      .track-form-wrapper { padding: 28px 22px; border-radius: 22px; }
+      .track-form .form-row { grid-template-columns: 1fr; }
+      .track-title { font-size: 24px; }
+      .track-icon { font-size: 44px; }
+      .track-info-row { flex-direction: column; align-items: flex-start; gap: 6px; }
+      .track-info-value { text-align: left; }
+      #trackMap { height: 320px; }
+    }
+  </style>
+</head>
+<body class="storm">
+
+  <div class="rain" id="rain"></div>
+  <div class="lightning" id="lightning"></div>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <span class="logo-ship">⛵</span>
+        <span class="logo-text">SEVEN OCEANS</span>
+      </a>
+      <button class="menu-toggle" id="menuToggle">☰</button>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="product.html">Product</a></li>
+        <li><a href="nutrition.html">Nutrition</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" class="btn-nav">Order Now</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="page-hero-content">
+      <div class="hero-badge">📦 Order Tracking</div>
+      <h1 class="page-title">Track Your <span>Order</span></h1>
+      <p class="page-subtitle">See live map, timeline, and tracking number</p>
+    </div>
+  </section>
+
+  <section class="track-content">
+    <div class="container">
+
+      <div class="track-form-wrapper">
+        <span class="track-icon">📦</span>
+        <h2 class="track-title">Where's My Order?</h2>
+        <p class="track-subtitle">
+          Enter your <strong>Email</strong> and <strong>Order ID</strong> from your confirmation email.
+        </p>
+
+        <form id="trackForm" class="track-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="emailInput">Email Address</label>
+              <input 
+                type="email" 
+                id="emailInput" 
+                placeholder="your@email.com"
+                autocomplete="email"
+              >
+            </div>
+            <div class="form-group">
+              <label for="orderIdInput">Order ID</label>
+              <input 
+                type="text" 
+                id="orderIdInput" 
+                placeholder="e.g. example123"
+                autocomplete="off"
+              >
+            </div>
+          </div>
+
+          <button type="submit" class="track-submit">
+            <span>🔍</span>
+            Track Order
+          </button>
+        </form>
+
+        <div class="track-error" id="trackError">
+          <strong>❌ Order not found</strong>
+          Please check your Email and Order ID. If the issue persists, contact us at info@sevenoceansemergency.com
+        </div>
+      </div>
+
+      <!-- RESULTS -->
+      <div class="track-results" id="trackResults">
+
+        <!-- MAP -->
+        <div class="track-map-wrapper">
+          <div class="track-map-header">
+            <div class="track-map-title">
+              <span>🗺️</span>
+              Live Route
+            </div>
+            <span class="track-status-badge" id="statusBadge">
+              🚚 <span id="statusText">In Transit</span>
+            </span>
+          </div>
+          <div id="trackMap"></div>
+        </div>
+
+        <!-- INFO -->
+        <div class="track-info-card">
+          <h3>📋 Order Details</h3>
+
+          <div class="track-info-row">
+            <span class="track-info-label">Order ID</span>
+            <span class="track-info-value mono" id="resultOrderId">—</span>
+          </div>
+          <div class="track-info-row">
+            <span class="track-info-label">Status</span>
+            <span class="track-info-value" id="resultStatus">—</span>
+          </div>
+          <div class="track-info-row">
+            <span class="track-info-label">Carrier</span>
+            <span class="track-info-value" id="resultCarrier">—</span>
+          </div>
+          <div class="track-info-row">
+            <span class="track-info-label">Tracking Number</span>
+            <span class="track-info-value mono" id="resultTracking">—</span>
+          </div>
+          <div class="track-info-row">
+            <span class="track-info-label">Shipped Date</span>
+            <span class="track-info-value" id="resultShippedDate">—</span>
+          </div>
+          <div class="track-info-row">
+            <span class="track-info-label">Est. Delivery</span>
+            <span class="track-info-value" id="resultDelivery">—</span>
+          </div>
+
+          <a href="#" id="carrierLink" target="_blank" rel="noopener" class="track-carrier-btn">
+            🚚 Track on Carrier Website
+          </a>
+        </div>
+
+        <!-- TIMELINE -->
+        <div class="track-timeline-card">
+          <h3>🛤️ Journey Timeline</h3>
+          <div class="timeline" id="timeline"></div>
+        </div>
+
+      </div>
+
+      <div class="track-help">
+        <p>
+          <strong>Can't find your Order ID?</strong><br>
+          Check your confirmation email from <strong>info@sevenoceansemergency.com</strong>.<br>
+          Still need help? Email us at <a href="mailto:info@sevenoceansemergency.com">info@sevenoceansemergency.com</a>
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>⛵ SEVEN OCEANS</h4>
+          <p>Standard Emergency Food Ration. Trusted worldwide since 1970s.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Shop</h4>
+          <ul>
+            <li><a href="product.html">Product</a></li>
+            <li><a href="nutrition.html">Nutrition</a></li>
+            <li><a href="contact.html">Order</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="track.html">Track Order</a></li>
+            <li>📧 info@sevenoceansemergency.com</li>
+            <li>📍 Richmond, VA 23234</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="refund.html">Refund Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2024 Seven Oceans Emergency. All rights reserved.</p>
+        <p>Made with ⚓ in USA</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="script.js"></script>
+  <script src="track.js"></script>
+</body>
+</html>
