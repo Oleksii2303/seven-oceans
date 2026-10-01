@@ -403,3 +403,33 @@ a.info-value:hover {
     font-size: 20px;
   }
 }
+/* ===== AMAZON BUTTON ===== */
+.pay-amazon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  padding: 18px 32px;
+  background: linear-gradient(135deg, #ff9900, #ffb84d);
+  color: #111;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  border-radius: 14px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 24px rgba(255, 153, 0, 0.4);
+  border: none;
+  cursor: pointer;
+}
+
+.pay-amazon-btn span {
+  font-size: 22px;
+}
+
+.pay-amazon-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(255, 153, 0, 0.6);
+}
