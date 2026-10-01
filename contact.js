@@ -1,12 +1,13 @@
-// ===== CONTACT FORM — EmailJS + Vulta Payment =====
+// ===== CONTACT FORM — EmailJS + Vulta + Amazon =====
 
 // ===== EMAILJS CONFIG =====
 const EMAILJS_PUBLIC_KEY = 'E7pjNV8SQNHAO65U6';
 const EMAILJS_SERVICE_ID = 'service_k41npu2';
 const EMAILJS_TEMPLATE_ID = 'template_fsvvhpa';
 
-// ===== VULTA PAYMENT LINK =====
-const PAYMENT_LINK = 'https://vulta.one/pay/link/f065a161-92a6-47d8-8132-6c10ac75a561';
+// ===== PAYMENT LINKS =====
+const VULTA_PAYMENT_LINK = 'https://vulta.one/pay/link/f065a161-92a6-47d8-8132-6c10ac75a561';
+const AMAZON_PRODUCT_LINK = 'https://www.amazon.com/gp/product/B09B8G2J9P/ref=cx_skuctr_share?smid=A28MPQSLK4AOJA';
 
 if (typeof emailjs !== 'undefined') {
   emailjs.init(EMAILJS_PUBLIC_KEY);
@@ -83,11 +84,9 @@ document.addEventListener('DOMContentLoaded', () => {
       };
 
       try {
-        // Send email via EmailJS
         await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
         console.log('✅ Order sent successfully');
 
-        // Show payment modal
         showPaymentModal({
           name: fullName,
           email: email,
@@ -122,12 +121,17 @@ document.addEventListener('DOMContentLoaded', () => {
         <p>Your order of <strong>${order.qty} box${order.qty > 1 ? 'es' : ''}</strong> — Total: <strong>${order.total}</strong></p>
         
         <div class="success-info">
-          <p>Complete your payment securely. We accept <strong>Credit Card and Apple Pay</strong>.</p>
+          <p>Choose your preferred payment method:</p>
         </div>
 
-        <a href="${PAYMENT_LINK}" target="_blank" rel="noreferrer noopener" class="pay-crypto-btn">
+        <a href="${VULTA_PAYMENT_LINK}" target="_blank" rel="noreferrer noopener" class="pay-crypto-btn" style="margin-bottom: 12px;">
           <span>💳</span>
-          Pay Now — ${order.total}
+          Pay with Card / Crypto — ${order.total}
+        </a>
+
+        <a href="${AMAZON_PRODUCT_LINK}" target="_blank" rel="noreferrer noopener" class="pay-amazon-btn">
+          <span>🛒</span>
+          Or Buy on Amazon
         </a>
 
         <p class="success-note">
