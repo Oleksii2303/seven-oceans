@@ -1,14 +1,13 @@
-// ===== CONTACT FORM — EmailJS + NexaPay =====
+// ===== CONTACT FORM — EmailJS + Vulta Payment =====
 
 // ===== EMAILJS CONFIG =====
 const EMAILJS_PUBLIC_KEY = 'E7pjNV8SQNHAO65U6';
 const EMAILJS_SERVICE_ID = 'service_k41npu2';
 const EMAILJS_TEMPLATE_ID = 'template_fsvvhpa';
 
-// ===== NEXAPAY CONFIG =====
-const NEXAPAY_PAYMENT_LINK = 'https://nexapay.one/checkout/order_b3e9fcaa7fe547e9d71a5c52067dff53?sig=plsig_873a7f88372588a2a7c5c1fa4cdc4b216411feee1aed79c39fa0822619082054';
+// ===== VULTA PAYMENT LINK =====
+const PAYMENT_LINK = 'https://vulta.one/pay/link/f065a161-92a6-47d8-8132-6c10ac75a561';
 
-// Init EmailJS
 if (typeof emailjs !== 'undefined') {
   emailjs.init(EMAILJS_PUBLIC_KEY);
 }
@@ -88,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
         await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
         console.log('✅ Order sent successfully');
 
-        // Show payment modal with NexaPay
+        // Show payment modal
         showPaymentModal({
           name: fullName,
           email: email,
@@ -123,10 +122,10 @@ document.addEventListener('DOMContentLoaded', () => {
         <p>Your order of <strong>${order.qty} box${order.qty > 1 ? 'es' : ''}</strong> — Total: <strong>${order.total}</strong></p>
         
         <div class="success-info">
-          <p>Choose your payment method: <strong>Credit Card, Apple Pay, or Crypto</strong>. All payments are secure.</p>
+          <p>Complete your payment securely. We accept <strong>Credit Card and Apple Pay</strong>.</p>
         </div>
 
-        <a href="${NEXAPAY_PAYMENT_LINK}" target="_blank" rel="noreferrer noopener" class="pay-crypto-btn">
+        <a href="${PAYMENT_LINK}" target="_blank" rel="noreferrer noopener" class="pay-crypto-btn">
           <span>💳</span>
           Pay Now — ${order.total}
         </a>
